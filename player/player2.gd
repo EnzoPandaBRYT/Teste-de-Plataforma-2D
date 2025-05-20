@@ -18,6 +18,8 @@ func _walk() -> void:
 	
 	if !_Input and !_jump_action:
 		_change_state(_StateMachine.IDLE)
+	else:
+		_change_state(_StateMachine.JUMP)
 
 func _jump() -> void:
 	_enterState("jumping")
