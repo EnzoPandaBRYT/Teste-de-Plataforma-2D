@@ -5,8 +5,8 @@ class_name Character extends CharacterBody2D
 
 enum _StateMachine { IDLE, WALK, JUMP } # Determina todos os Estados possíveis
 
-var _state : _StateMachine = _StateMachine.IDLE # Determina o estado padrão para IDLE
-var _enter_state : bool = true
+var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)"
+var _enter_state := true # Variável 
 
 @onready var _animated_sprite = $anim
 
@@ -33,7 +33,7 @@ func player_movement():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = _jump_speed
 		
-	print(_Input)
+	print(_jump_action)
 
 func _enterState(animation: String) -> void:
 	if _enter_state:
@@ -53,7 +53,13 @@ func _walk() -> void: pass
 func _jump() -> void: pass
 
 func _movement() -> void:
-	velocity.x = _Input
+	velocity.x = _Input # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
+	
+	# Flipa o personagem dependendo do Input
+	if _Input > 0:
+		_animated_sprite.flip_h = false
+	if _Input < 0:
+		_animated_sprite.flip_h = true
 
 func _stop_movement() -> void:
 	velocity.x = 0
@@ -61,9 +67,3 @@ func _stop_movement() -> void:
 func _set_Gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta # Gravidade
-
-func _flip() -> void:
-	if _Input > 0:
-		_animated_sprite.flip_h = false
-	if _Input < 0:
-		_animated_sprite.flip_h = true

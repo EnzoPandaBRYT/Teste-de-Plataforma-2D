@@ -6,7 +6,6 @@ func _idle() -> void: # Estado Inerte
 	
 	if _Input: # Se tiver Input, então:
 		_change_state(_StateMachine.WALK)
-		_flip() # Flipa o personagem pro lado certo
 		_movement() # Movimentação do Personagem
 		
 	if _jump_action:
@@ -14,15 +13,19 @@ func _idle() -> void: # Estado Inerte
 		
 
 func _walk() -> void:
-	_enterState("walking")
 	
-	if !_Input and !_jump_action:
-		_change_state(_StateMachine.IDLE)
-	else:
+	if _jump_action:
 		_change_state(_StateMachine.JUMP)
+	elif _Input:
+		_enterState("walking")
+	else:
+		_change_state(_StateMachine.IDLE)
 
 func _jump() -> void:
 	_enterState("jumping")
+	
+	if _Input: # Se tiver Input, então:
+		_movement() # Movimentação do Personagem
 	
 	if _jump_action:
 		_animated_sprite.play("jumping")

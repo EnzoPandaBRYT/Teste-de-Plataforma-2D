@@ -1,0 +1,3 @@
+v0.1.4:
+- Agora o Player não continua com animação de "Andar" enquanto pula.
+- Removido função de "Flip" do StateMachine
