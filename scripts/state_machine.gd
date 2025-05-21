@@ -1,30 +1,32 @@
 class_name Character extends CharacterBody2D
 
-@export var _speed := 300.0
-@export var _jump_speed := -400.0
+@export var _speed := 200.0
+@export var _jump_speed := -300.0
 
-enum _StateMachine { IDLE, WALK, JUMP } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, JUMP, STOMP_CHARGE, ATTACK_STOMP } # Determina todos os Estados possíveis
 
-var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)"
+var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
 
 @onready var _animated_sprite = $anim
 
-var _Input: float:
-	get: return Input.get_axis("move_left", "move_right") * _speed
+var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
+	get: return Input.get_axis("move_left", "move_right")
 
-var _jump_action: bool:
+var _jump_action: bool: # Sistema de Pulo
 	get: return Input.is_action_just_pressed("jump")
 
 func _physics_process(delta: float) -> void:
 	
-	match _state:
+	match _state: # State machine que, quando encontra o estado, executa uma função
 		_StateMachine.IDLE: _idle()
 		_StateMachine.WALK: _walk()
 		_StateMachine.JUMP: _jump()
-	
-	_set_Gravity(delta)
-	player_movement()
+		_StateMachine.STOMP_CHARGE: _stomp_charge()
+		_StateMachine.ATTACK_STOMP: _attack_stomp()
+
+	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
+	player_movement() # Movimentação do personagem
 	move_and_slide()
 
 func player_movement():
@@ -32,8 +34,6 @@ func player_movement():
 	# Pulo
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = _jump_speed
-		
-	print(_jump_action)
 
 func _enterState(animation: String) -> void:
 	if _enter_state:
@@ -51,9 +51,11 @@ func _change_state(new_state: _StateMachine) -> void:
 func _idle() -> void: pass
 func _walk() -> void: pass
 func _jump() -> void: pass
+func _stomp_charge() -> void: pass
+func _attack_stomp() -> void: pass
 
 func _movement() -> void:
-	velocity.x = _Input # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
+	velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
 	# Flipa o personagem dependendo do Input
 	if _Input > 0:
@@ -65,5 +67,5 @@ func _stop_movement() -> void:
 	velocity.x = 0
 
 func _set_Gravity(delta: float) -> void:
-	if not is_on_floor():
+	if !is_on_floor() and _state != _StateMachine.STOMP_CHARGE:
 		velocity += get_gravity() * delta # Gravidade
