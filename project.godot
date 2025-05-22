@@ -13,6 +13,7 @@ config_version=5
 config/name="Panda Platform"
 run/main_scene="uid://cne65pmsryim5"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=240
 
 [display]
 

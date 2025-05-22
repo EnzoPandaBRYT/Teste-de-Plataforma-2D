@@ -1,3 +1,33 @@
-v0.1.5:
-- Adicionado "Stomp" no StateMachine
-- Habilidade "Stomp" sendo trabalhada.
+v0.1.6:
+- Habilidade "Stomp" funcional:
+  - Foram corrigidos erros que impediam a animação de ataque do Stomp de serem executadas corretamente;
+  - Logo mais será possível cancelar o Stomp com um pulo.
+- Agora, é possível pular de acordo com a pressão exercida no botão de pulo;
+- Atualizado script do movimento do jogador (Movido: StateMachine -> player);
+- O erro do input dos analógicos de controle não atualizarem corretamente a cada frame foram corrigidos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^-.-^ = Bolinha

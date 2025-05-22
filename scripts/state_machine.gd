@@ -1,7 +1,7 @@
 class_name Character extends CharacterBody2D
 
 @export var _speed := 200.0
-@export var _jump_speed := -300.0
+@export var _jump_speed := -400.0
 
 enum _StateMachine { IDLE, WALK, JUMP, STOMP_CHARGE, ATTACK_STOMP } # Determina todos os Estados possíveis
 
@@ -13,8 +13,9 @@ var _enter_state := true # Variável
 var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.get_axis("move_left", "move_right")
 
+@warning_ignore("unused_private_class_variable")
 var _jump_action: bool: # Sistema de Pulo
-	get: return Input.is_action_just_pressed("jump")
+	get: return Input.is_action_pressed("jump")
 
 func _physics_process(delta: float) -> void:
 	
@@ -24,16 +25,10 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.JUMP: _jump()
 		_StateMachine.STOMP_CHARGE: _stomp_charge()
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
-
+		
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
 	move_and_slide()
-
-func player_movement():
-	
-	# Pulo
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = _jump_speed
 
 func _enterState(animation: String) -> void:
 	if _enter_state:
@@ -46,8 +41,9 @@ func _change_state(new_state: _StateMachine) -> void:
 		_state = new_state
 		_enter_state = true
 
+func player_movement() -> void: pass
 
-
+# Estados possíveis dos personagens
 func _idle() -> void: pass
 func _walk() -> void: pass
 func _jump() -> void: pass
