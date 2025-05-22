@@ -180,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ejfk")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack_stomp_ground",
 "speed": 16.0
 }, {
@@ -276,8 +276,8 @@ script = ExtResource("1_g1dw6")
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oul6g")
 animation = &"attack_stomp_ground"
-frame = 7
-frame_progress = 1.0
+frame = 4
+frame_progress = 0.771362
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14

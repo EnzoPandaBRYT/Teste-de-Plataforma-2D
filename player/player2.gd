@@ -1,3 +1,4 @@
+
 extends Character
 
 var stomp_charge := 0.0
@@ -24,6 +25,7 @@ func _walk() -> void:
 
 func _jump() -> void:
 	_enterState("jumping")
+	
 	if _Input: # Se tiver Input, então:
 		_movement() # Movimentação do Personagem
 	
@@ -31,7 +33,7 @@ func _jump() -> void:
 		_animated_sprite.play("jumping")
 		
 	
-	if Input.is_action_pressed("crouch") and Input.is_action_just_pressed("use_power") and !is_on_floor():
+	if Input.is_action_pressed("crouch") and Input.is_action_just_pressed("use_power") and velocity.y >= 0:
 		_change_state(_StateMachine.STOMP_CHARGE)
 		stomp_charge = 0
 	
@@ -70,10 +72,9 @@ func _attack_stomp() -> void:
 	if is_on_floor():
 		_animated_sprite.play("attack_stomp_ground")
 		var animation_timer := 0.0
-		while animation_timer < 0.25 and is_on_floor(): # Toca por 1 segundo
-			print(animation_timer)
+		while animation_timer < 0.2 and is_on_floor(): # Toca por 1 segundo
 			animation_timer += get_process_delta_time()
-			await get_tree().create_timer((animation_timer * stomp_charge)/1) # Aguarda o próximo frame
+			await get_tree().process_frame # Aguarda o próximo frame
 		_change_state(_StateMachine.IDLE)
 	
 	

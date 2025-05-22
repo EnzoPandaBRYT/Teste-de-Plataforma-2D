@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.JUMP: _jump()
 		_StateMachine.STOMP_CHARGE: _stomp_charge()
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
-		
+	
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
 	move_and_slide()
