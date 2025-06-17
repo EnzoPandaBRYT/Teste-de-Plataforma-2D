@@ -1,12 +1,29 @@
-[gd_scene load_steps=42 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=47 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://qm7s55p00c04" path="res://assets/player/Idle (32 x 32) (Fire).png" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://cgkxuvpvkhxfn" path="res://assets/player/Basic_Attack (32 x 32) (Fire).png" id="2_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bkap5edibvxa8" path="res://assets/player/Stomp Attack (Ground) (32 x 32) (Fire).png" id="3_boad6"]
 [ext_resource type="Texture2D" uid="uid://cypahrrjldrst" path="res://assets/player/Walking (32 x 32) (Fire).png" id="3_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cbum18jjxnrbc" path="res://assets/player/Jumping (32 x 32) (Fire).png" id="3_yw30f"]
 [ext_resource type="Texture2D" uid="uid://b7krlnn80kdk" path="res://assets/player/Stomp Attack (32 x 32) (Fire).png" id="4_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://dq20t20gff1ty" path="res://assets/player/Charging Stomp (32 x 32) (Fire).png" id="4_qjkh3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
+atlas = ExtResource("2_rgyib")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q28gw"]
+atlas = ExtResource("2_rgyib")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge24q"]
+atlas = ExtResource("2_rgyib")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnw6m"]
+atlas = ExtResource("2_rgyib")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
 atlas = ExtResource("4_g6k8r")
@@ -138,6 +155,23 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oul6g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd2rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q28gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge24q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnw6m")
+}],
+"loop": true,
+"name": &"attack_basic",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjvpn")
@@ -275,9 +309,8 @@ script = ExtResource("1_g1dw6")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"attack_stomp_ground"
-frame = 7
-frame_progress = 1.0
+animation = &"attack_basic"
+frame_progress = 0.05879
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
@@ -287,3 +320,4 @@ shape = SubResource("CapsuleShape2D_kqu6x")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 process_callback = 0
+position_smoothing_enabled = true

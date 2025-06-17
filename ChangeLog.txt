@@ -1,10 +1,7 @@
 v0.1.6:
-- Habilidade "Stomp" funcional:
-  - Foram corrigidos erros que impediam a animação de ataque do Stomp de serem executadas corretamente;
-  - Logo mais será possível cancelar o Stomp com um pulo.
-- Agora, é possível pular de acordo com a pressão exercida no botão de pulo;
-- Atualizado script do movimento do jogador (Movido: StateMachine -> player);
-- O erro do input dos analógicos de controle não atualizarem corretamente a cada frame foram corrigidos.
+- Pulo ALTERADO:
+  - Caso pare a ação de pular, cancela totalmente a inércia;
+- Ainda é possível pular de acordo com a pressão exercida no botão de pulo;
 
 
 
@@ -30,4 +27,4 @@ v0.1.6:
 
 
 
-^-.-^ = Bolinha
+^-.-^ = Bob
