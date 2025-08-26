@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ep3slxen4t7"]
+[gd_scene load_steps=9 format=3 uid="uid://b1ep3slxen4t7"]
 
 [ext_resource type="Script" uid="uid://qfmcruyyj3o3" path="res://gui/scripts/main_menu.gd" id="1_dovto"]
 [ext_resource type="Script" uid="uid://c6oxnsievle4c" path="res://gui/scripts/game_title.gd" id="2_b4e1n"]
 [ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/button_wiggle.gd" id="3_j7jgc"]
+[ext_resource type="Texture2D" uid="uid://cs3v4uofoj588" path="res://assets/images/backgroud.png" id="4_71m5h"]
+[ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="5_7jyi1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71m5h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b4e1n"]
 
@@ -17,6 +21,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dovto")
 
+[node name="Backgroud" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+texture = ExtResource("4_71m5h")
+
 [node name="background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -24,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_71m5h")
 
 [node name="gameTitle" type="Label" parent="."]
 layout_mode = 1
@@ -72,16 +81,19 @@ script = ExtResource("3_j7jgc")
 [node name="start" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Jogar"
 
 [node name="options" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Opções"
 
 [node name="exit" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Sair"
 
 [connection signal="mouse_entered" from="Panel2/container/start" to="." method="_on_button_mouse_entered"]

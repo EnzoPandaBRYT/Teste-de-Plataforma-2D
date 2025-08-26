@@ -1,34 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwf2pw6w0yaij"]
+[gd_scene load_steps=9 format=3 uid="uid://cwf2pw6w0yaij"]
 
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="1_7d2h1"]
+[ext_resource type="Script" uid="uid://byyy06r3x4qa7" path="res://gui/scripts/options_menu.gd" id="1_ap0s0"]
+[ext_resource type="Texture2D" uid="uid://cs3v4uofoj588" path="res://assets/images/backgroud.png" id="2_60md4"]
+[ext_resource type="Script" uid="uid://dlslxyv1v6jwp" path="res://gui/scripts/background.gd" id="2_wj55l"]
+[ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/button_wiggle.gd" id="4_ap0s0"]
+[ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="6_lvx1p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_60md4"]
 font_size = 24
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jmya"]
+
+[node name="options_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ap0s0")
 
-[node name="background" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+texture = ExtResource("2_60md4")
+script = ExtResource("2_wj55l")
 
 [node name="options" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4865
-anchor_top = 0.0925926
-anchor_right = 0.4865
-anchor_bottom = 0.0925926
+anchor_left = 0.501083
+anchor_top = 0.114815
+anchor_right = 0.501083
+anchor_bottom = 0.114815
 offset_left = -72.52
 offset_top = -15.0
 offset_right = 72.52
@@ -41,3 +45,37 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_7d2h1")
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6jmya")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.91
+anchor_right = 0.5
+anchor_bottom = 0.91
+offset_left = -30.0
+offset_top = -52.02
+offset_right = 30.0
+offset_bottom = -24.02
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_ap0s0")
+
+[node name="back" type="Button" parent="Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = ExtResource("6_lvx1p")
+text = "Voltar"
+
+[connection signal="mouse_entered" from="Panel2/VBoxContainer/back" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Panel2/VBoxContainer/back" to="." method="_on_back_pressed"]
