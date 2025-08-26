@@ -1,7 +1,12 @@
-v0.1.6:
+v0.1.7:
 - Pulo ALTERADO:
-  - Caso pare a ação de pular, cancela totalmente a inércia;
-- Ainda é possível pular de acordo com a pressão exercida no botão de pulo;
+	- Agora, quando o jogador para de pressionar o botão de pulo, o personagem irá desacelerar subitamente;
+
+- MENUS ADICIONADOS!:
+	- O Menu Inicial funciona, juntamente de seus botões!
+	
+- MÚSICAS ADICIONADAS!:
+	- Agora, o Menu Inicial e a Fase de Debug tem suas respectivas músicas!
 
 
 

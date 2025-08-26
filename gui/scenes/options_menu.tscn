@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwf2pw6w0yaij"]
+
+[ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="1_7d2h1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_60md4"]
+font_size = 24
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="options" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4865
+anchor_top = 0.0925926
+anchor_right = 0.4865
+anchor_bottom = 0.0925926
+offset_left = -72.52
+offset_top = -15.0
+offset_right = 72.52
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Opções"
+label_settings = SubResource("LabelSettings_60md4")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_7d2h1")
+metadata/_edit_use_anchors_ = true

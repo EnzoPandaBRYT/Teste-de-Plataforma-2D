@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody2D
 
-@export var _speed := 200.0
+@export var _speed := 150.0
 @export var _jump_speed := -350.0
 
 enum _StateMachine { IDLE, WALK, JUMP, STOMP_CHARGE, ATTACK_STOMP, ATTACK_BASIC } # Determina todos os Estados possíveis
@@ -18,7 +18,6 @@ var _jump_action: bool: # Sistema de Pulo
 	get: return Input.is_action_pressed("jump")
 
 func _physics_process(delta: float) -> void:
-	
 	match _state: # State machine que, quando encontra o estado, executa uma função
 		_StateMachine.IDLE: _idle()
 		_StateMachine.WALK: _walk()
@@ -29,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 	print(_StateMachine)
 	print(_state)
-	print(_jump_action)
+	print("Is jumping?:" + str(_jump_action))
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
 	move_and_slide()
@@ -58,7 +57,7 @@ func _basic_attack() -> void: pass
 func _movement() -> void:
 	velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
-	# Flipa o personagem dependendo do Input
+	# Flipa o personagem dependendo da direção que _Input recebe
 	if _Input > 0:
 		_animated_sprite.flip_h = false
 	if _Input < 0:

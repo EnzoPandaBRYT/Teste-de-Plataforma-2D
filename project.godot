@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Panda Platform"
-run/main_scene="uid://cne65pmsryim5"
+run/main_scene="uid://b1ep3slxen4t7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=240
+
+[autoload]
+
+Player="*res://scripts/player/player.gd"
+AudioPlayer="*res://sounds/managers/AudioPlayer.tscn"
 
 [display]
 
@@ -22,6 +27,11 @@ window/size/viewport_height=270
 window/size/borderless=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://dl7vchhfa1cqv"
 
 [input]
 
@@ -76,3 +86,4 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"

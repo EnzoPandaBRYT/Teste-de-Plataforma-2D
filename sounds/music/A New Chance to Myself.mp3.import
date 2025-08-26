@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bww0urnldt02o"
+path="res://.godot/imported/A New Chance to Myself.mp3-b64c4613664c43de0bd45f9b5f39f1f1.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/A New Chance to Myself.mp3"
+dest_files=["res://.godot/imported/A New Chance to Myself.mp3-b64c4613664c43de0bd45f9b5f39f1f1.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
