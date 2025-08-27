@@ -1,13 +1,13 @@
 [gd_scene load_steps=47 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
-[ext_resource type="Texture2D" uid="uid://qm7s55p00c04" path="res://assets/player/Idle (32 x 32) (Fire).png" id="1_oul6g"]
-[ext_resource type="Texture2D" uid="uid://cgkxuvpvkhxfn" path="res://assets/player/Basic_Attack (32 x 32) (Fire).png" id="2_rgyib"]
-[ext_resource type="Texture2D" uid="uid://bkap5edibvxa8" path="res://assets/player/Stomp Attack (Ground) (32 x 32) (Fire).png" id="3_boad6"]
-[ext_resource type="Texture2D" uid="uid://cypahrrjldrst" path="res://assets/player/Walking (32 x 32) (Fire).png" id="3_g1dw6"]
-[ext_resource type="Texture2D" uid="uid://cbum18jjxnrbc" path="res://assets/player/Jumping (32 x 32) (Fire).png" id="3_yw30f"]
-[ext_resource type="Texture2D" uid="uid://b7krlnn80kdk" path="res://assets/player/Stomp Attack (32 x 32) (Fire).png" id="4_g6k8r"]
-[ext_resource type="Texture2D" uid="uid://dq20t20gff1ty" path="res://assets/player/Charging Stomp (32 x 32) (Fire).png" id="4_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://cgkxuvpvkhxfn" path="res://assets/characters/player/phyro/Basic_Attack (32 x 32) (Fire).png" id="2_rgyib"]
+[ext_resource type="Texture2D" uid="uid://bkap5edibvxa8" path="res://assets/characters/player/phyro/Stomp Attack (Ground) (32 x 32) (Fire).png" id="3_boad6"]
+[ext_resource type="Texture2D" uid="uid://cypahrrjldrst" path="res://assets/characters/player/phyro/Walking (32 x 32) (Fire).png" id="3_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://cbum18jjxnrbc" path="res://assets/characters/player/phyro/Jumping (32 x 32) (Fire).png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://b7krlnn80kdk" path="res://assets/characters/player/phyro/Stomp Attack (32 x 32) (Fire).png" id="4_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://dq20t20gff1ty" path="res://assets/characters/player/phyro/Charging Stomp (32 x 32) (Fire).png" id="4_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://c63731q3cylyu" path="res://assets/characters/player/glitchy'/Glitchy' - Idle.png" id="5_idpv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
 atlas = ExtResource("2_rgyib")
@@ -73,21 +73,21 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("3_boad6")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
-atlas = ExtResource("1_oul6g")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpf03"]
+atlas = ExtResource("5_idpv6")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
-atlas = ExtResource("1_oul6g")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5dtk"]
+atlas = ExtResource("5_idpv6")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
-atlas = ExtResource("1_oul6g")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t07l"]
+atlas = ExtResource("5_idpv6")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
-atlas = ExtResource("1_oul6g")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_on558"]
+atlas = ExtResource("5_idpv6")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("3_yw30f")
@@ -220,20 +220,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rkbax")
+"texture": SubResource("AtlasTexture_rpf03")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g1dw6")
+"texture": SubResource("AtlasTexture_x5dtk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yw30f")
+"texture": SubResource("AtlasTexture_3t07l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qjkh3")
+"texture": SubResource("AtlasTexture_on558")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -300,7 +300,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kqu6x"]
-radius = 7.0
+radius = 3.0
 height = 16.0
 
 [node name="player" type="CharacterBody2D"]
@@ -308,14 +308,15 @@ collision_mask = 14
 script = ExtResource("1_g1dw6")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"attack_stomp"
-frame = 1
-frame_progress = 0.65505
+animation = &"idle"
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
-position = Vector2(0, 8)
+position = Vector2(0, 7)
+scale = Vector2(1, 1.09)
 shape = SubResource("CapsuleShape2D_kqu6x")
 
 [node name="Camera2D" type="Camera2D" parent="."]

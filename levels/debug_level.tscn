@@ -76,7 +76,8 @@ sources/0 = SubResource("TileSetAtlasSource_spoyw")
 script = ExtResource("1_spoyw")
 
 [node name="player" parent="." instance=ExtResource("1_rggqk")]
-position = Vector2(-156, -6)
+position = Vector2(-159, -21)
+scale = Vector2(2, 2)
 
 [node name="ground" type="Node" parent="."]
 

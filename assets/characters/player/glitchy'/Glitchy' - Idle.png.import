@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7krlnn80kdk"
-path="res://.godot/imported/Stomp Attack (32 x 32) (Fire).png-2fad17b9b0e725fe260842bd2327516e.ctex"
+uid="uid://c63731q3cylyu"
+path="res://.godot/imported/Glitchy' - Idle.png-753ae65363e15b39a224cfe69c41a161.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Stomp Attack (32 x 32) (Fire).png"
-dest_files=["res://.godot/imported/Stomp Attack (32 x 32) (Fire).png-2fad17b9b0e725fe260842bd2327516e.ctex"]
+source_file="res://assets/characters/player/glitchy'/Glitchy' - Idle.png"
+dest_files=["res://.godot/imported/Glitchy' - Idle.png-753ae65363e15b39a224cfe69c41a161.ctex"]
 
 [params]
 

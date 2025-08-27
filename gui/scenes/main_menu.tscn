@@ -96,9 +96,12 @@ size_flags_vertical = 6
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Sair"
 
+[connection signal="focus_entered" from="Panel2/container/start" to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="Panel2/container/start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/start" to="." method="_on_start_pressed"]
+[connection signal="focus_entered" from="Panel2/container/options" to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="Panel2/container/options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="Panel2/container/exit" to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="Panel2/container/exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/exit" to="." method="_on_exit_pressed"]

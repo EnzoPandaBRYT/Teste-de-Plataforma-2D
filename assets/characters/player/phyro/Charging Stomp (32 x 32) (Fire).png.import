@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cypahrrjldrst"
-path="res://.godot/imported/Walking (32 x 32) (Fire).png-d8d173cd212108e9820220a4e5764d36.ctex"
+uid="uid://dq20t20gff1ty"
+path="res://.godot/imported/Charging Stomp (32 x 32) (Fire).png-ff76b06d761126ad04b967b1d70070b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Walking (32 x 32) (Fire).png"
-dest_files=["res://.godot/imported/Walking (32 x 32) (Fire).png-d8d173cd212108e9820220a4e5764d36.ctex"]
+source_file="res://assets/characters/player/phyro/Charging Stomp (32 x 32) (Fire).png"
+dest_files=["res://.godot/imported/Charging Stomp (32 x 32) (Fire).png-ff76b06d761126ad04b967b1d70070b0.ctex"]
 
 [params]
 

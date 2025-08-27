@@ -8,7 +8,10 @@ func _ready():
 		
 func _on_button_mouse_entered() -> void:
 	AudioPlayer.play_FX(sfxSelectNormal, -9.0)
-	
+
+func _on_focus_entered() -> void:
+	AudioPlayer.play_FX(sfxSelectNormal, -9.0)
+
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
 

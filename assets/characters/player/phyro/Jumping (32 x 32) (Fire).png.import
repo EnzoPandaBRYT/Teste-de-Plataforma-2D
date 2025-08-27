@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq20t20gff1ty"
-path="res://.godot/imported/Charging Stomp (32 x 32) (Fire).png-41e1dddd68d237d2a7abd77cf799905b.ctex"
+uid="uid://cbum18jjxnrbc"
+path="res://.godot/imported/Jumping (32 x 32) (Fire).png-6148478f1f07b7e3a890bfdb3857406a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Charging Stomp (32 x 32) (Fire).png"
-dest_files=["res://.godot/imported/Charging Stomp (32 x 32) (Fire).png-41e1dddd68d237d2a7abd77cf799905b.ctex"]
+source_file="res://assets/characters/player/phyro/Jumping (32 x 32) (Fire).png"
+dest_files=["res://.godot/imported/Jumping (32 x 32) (Fire).png-6148478f1f07b7e3a890bfdb3857406a.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgkxuvpvkhxfn"
-path="res://.godot/imported/Basic_Attack (32 x 32) (Fire).png-9438ebeb54e8399517210f64448addc9.ctex"
+path="res://.godot/imported/Basic_Attack (32 x 32) (Fire).png-a66bb28becbcf5c81b00c3a8d02f3bc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Basic_Attack (32 x 32) (Fire).png"
-dest_files=["res://.godot/imported/Basic_Attack (32 x 32) (Fire).png-9438ebeb54e8399517210f64448addc9.ctex"]
+source_file="res://assets/characters/player/phyro/Basic_Attack (32 x 32) (Fire).png"
+dest_files=["res://.godot/imported/Basic_Attack (32 x 32) (Fire).png-a66bb28becbcf5c81b00c3a8d02f3bc4.ctex"]
 
 [params]
 
