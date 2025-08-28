@@ -6,7 +6,7 @@ var redVel := true
 func _idle() -> void: # Estado Inerte
 	_enterState("idle") # Nome da Animação que será tocada
 	_stop_movement() # Anula qualquer movimento para 0
-	
+
 	if _Input: # Se tiver Input, então:
 		_change_state(_StateMachine.WALK)
 		
@@ -15,8 +15,10 @@ func _idle() -> void: # Estado Inerte
 		
 
 func _walk() -> void:
-	if _state and _state != _StateMachine.JUMP:
+	if _state != _StateMachine.JUMP:
 		_movement() # Movimentação do Personagem
+		if Input.is_action_pressed("run"):
+			$anim.speed_scale = 2
 	if _jump_action:
 		_change_state(_StateMachine.JUMP)
 	elif _Input:

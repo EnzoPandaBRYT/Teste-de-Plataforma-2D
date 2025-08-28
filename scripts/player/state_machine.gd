@@ -3,7 +3,7 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, JUMP, STOMP_CHARGE, ATTACK_STOMP, ATTACK_BASIC } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, STOMP_CHARGE, ATTACK_STOMP, ATTACK_BASIC } # Determina todos os Estados possíveis
 
 var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	match _state: # State machine que, quando encontra o estado, executa uma função
 		_StateMachine.IDLE: _idle()
 		_StateMachine.WALK: _walk()
+		_StateMachine.RUN: _run()
 		_StateMachine.JUMP: _jump()
 		_StateMachine.STOMP_CHARGE: _stomp_charge()
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
@@ -49,14 +50,15 @@ func player_movement() -> void: pass
 # Estados possíveis dos personagens
 func _idle() -> void: pass
 func _walk() -> void: pass
+func _run() -> void: pass
 func _jump() -> void: pass
 func _stomp_charge() -> void: pass
 func _attack_stomp() -> void: pass
 func _basic_attack() -> void: pass
 
 func _movement() -> void:
-	if Input.is_action_just_pressed("run"):
-		velocity.x = _Input * _speed + 25
+	if Input.is_action_pressed("run"):
+		velocity.x = _Input * _speed * 1.5
 	else:
 		velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
