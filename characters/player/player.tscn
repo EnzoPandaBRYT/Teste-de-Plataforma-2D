@@ -1,13 +1,13 @@
-[gd_scene load_steps=43 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=47 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cgkxuvpvkhxfn" path="res://assets/characters/player/phyro/Basic_Attack (32 x 32) (Fire).png" id="2_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bkap5edibvxa8" path="res://assets/characters/player/phyro/Stomp Attack (Ground) (32 x 32) (Fire).png" id="3_boad6"]
 [ext_resource type="Texture2D" uid="uid://b7krlnn80kdk" path="res://assets/characters/player/phyro/Stomp Attack (32 x 32) (Fire).png" id="4_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://dq20t20gff1ty" path="res://assets/characters/player/phyro/Charging Stomp (32 x 32) (Fire).png" id="4_qjkh3"]
-[ext_resource type="Texture2D" uid="uid://c63731q3cylyu" path="res://assets/characters/player/glitchy'/Glitchy' - Idle.png" id="5_idpv6"]
+[ext_resource type="Texture2D" uid="uid://ci706ygkm6io2" path="res://assets/characters/player/glitchy'/Idle.png" id="5_idpv6"]
 [ext_resource type="Texture2D" uid="uid://r0a64xe555sf" path="res://assets/characters/player/glitchy'/Jump.png" id="6_idpv6"]
-[ext_resource type="Texture2D" uid="uid://be0b2o6ss5b5f" path="res://assets/characters/player/glitchy'/Glitchy' - Walk.png" id="8_idpv6"]
+[ext_resource type="Texture2D" uid="uid://cffcdxug4olek" path="res://assets/characters/player/glitchy'/Walk.png" id="8_idpv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
 atlas = ExtResource("2_rgyib")
@@ -87,6 +87,22 @@ region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_on558"]
 atlas = ExtResource("5_idpv6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idpv6"]
+atlas = ExtResource("6_idpv6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqrcq"]
+atlas = ExtResource("6_idpv6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2agh"]
+atlas = ExtResource("6_idpv6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpo3a"]
+atlas = ExtResource("6_idpv6")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
@@ -221,11 +237,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_idpv6")
+"texture": SubResource("AtlasTexture_idpv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqrcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2agh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpo3a")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -287,6 +312,7 @@ position = Vector2(-1, 0)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
 animation = &"jumping"
+frame_progress = 0.0684319
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
@@ -297,4 +323,5 @@ shape = SubResource("CapsuleShape2D_kqu6x")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 process_callback = 0
+limit_left = -200
 position_smoothing_enabled = true
