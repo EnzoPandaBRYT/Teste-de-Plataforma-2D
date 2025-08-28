@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cgkxuvpvkhxfn" path="res://assets/characters/player/phyro/Basic_Attack (32 x 32) (Fire).png" id="2_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bkap5edibvxa8" path="res://assets/characters/player/phyro/Stomp Attack (Ground) (32 x 32) (Fire).png" id="3_boad6"]
-[ext_resource type="Texture2D" uid="uid://cypahrrjldrst" path="res://assets/characters/player/phyro/Walking (32 x 32) (Fire).png" id="3_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cbum18jjxnrbc" path="res://assets/characters/player/phyro/Jumping (32 x 32) (Fire).png" id="3_yw30f"]
 [ext_resource type="Texture2D" uid="uid://b7krlnn80kdk" path="res://assets/characters/player/phyro/Stomp Attack (32 x 32) (Fire).png" id="4_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://dq20t20gff1ty" path="res://assets/characters/player/phyro/Charging Stomp (32 x 32) (Fire).png" id="4_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://c63731q3cylyu" path="res://assets/characters/player/glitchy'/Glitchy' - Idle.png" id="5_idpv6"]
+[ext_resource type="Texture2D" uid="uid://be0b2o6ss5b5f" path="res://assets/characters/player/glitchy'/Glitchy' - Walk.png" id="8_idpv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
 atlas = ExtResource("2_rgyib")
@@ -137,21 +137,21 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("4_qjkh3")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
-atlas = ExtResource("3_g1dw6")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqopd"]
+atlas = ExtResource("8_idpv6")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
-atlas = ExtResource("3_g1dw6")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_icpky"]
+atlas = ExtResource("8_idpv6")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
-atlas = ExtResource("3_g1dw6")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_58jvb"]
+atlas = ExtResource("8_idpv6")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
-atlas = ExtResource("3_g1dw6")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l73k"]
+atlas = ExtResource("8_idpv6")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oul6g"]
 animations = [{
@@ -283,16 +283,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g6k8r")
+"texture": SubResource("AtlasTexture_gqopd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_boad6")
+"texture": SubResource("AtlasTexture_icpky")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rgyib")
+"texture": SubResource("AtlasTexture_58jvb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hg6s5")
+"texture": SubResource("AtlasTexture_8l73k")
 }],
 "loop": true,
 "name": &"walking",
@@ -311,7 +311,8 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, 0)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"idle"
+animation = &"walking"
+frame_progress = 0.530372
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14

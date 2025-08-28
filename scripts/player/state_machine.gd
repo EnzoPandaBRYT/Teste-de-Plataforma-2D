@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody2D
 
-@export var _speed := 150.0
+@export var _speed := 100.0
 @export var _jump_speed := -350.0
 
 enum _StateMachine { IDLE, WALK, JUMP, STOMP_CHARGE, ATTACK_STOMP, ATTACK_BASIC } # Determina todos os Estados possíveis
@@ -55,7 +55,10 @@ func _attack_stomp() -> void: pass
 func _basic_attack() -> void: pass
 
 func _movement() -> void:
-	velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
+	if Input.is_action_just_pressed("run"):
+		velocity.x = _Input * _speed + 25
+	else:
+		velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
 	# Flipa o personagem dependendo da direção que _Input recebe
 	if _Input > 0:

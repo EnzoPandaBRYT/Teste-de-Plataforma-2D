@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1ep3slxen4t7"]
+[gd_scene load_steps=8 format=3 uid="uid://b1ep3slxen4t7"]
 
 [ext_resource type="Script" uid="uid://qfmcruyyj3o3" path="res://gui/scripts/main_menu.gd" id="1_dovto"]
 [ext_resource type="Script" uid="uid://c6oxnsievle4c" path="res://gui/scripts/game_title.gd" id="2_b4e1n"]
@@ -7,8 +7,6 @@
 [ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="5_7jyi1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71m5h"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_b4e1n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dovto"]
 
@@ -47,8 +45,7 @@ offset_right = 73.04
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Phyro's Adventure"
-label_settings = SubResource("LabelSettings_b4e1n")
+text = "Glitchy's Adventure"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_b4e1n")
