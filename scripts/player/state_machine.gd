@@ -27,9 +27,10 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
 		_StateMachine.ATTACK_BASIC: _basic_attack()
 	
-	print(_StateMachine)
-	print(_state)
-	print("Is jumping?:" + str(_jump_action))
+	#print(_StateMachine)
+	#print(_state)
+	#print("Is jumping?:" + str(_jump_action))
+	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
 	move_and_slide()
@@ -74,3 +75,7 @@ func _stop_movement() -> void:
 func _set_Gravity(delta: float) -> void:
 	if !is_on_floor() and _state != _StateMachine.STOMP_CHARGE:
 		velocity += get_gravity() * delta # Gravidade
+		
+func _reset_scene() -> void:
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()

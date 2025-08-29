@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwf2pw6w0yaij"]
+[gd_scene load_steps=10 format=3 uid="uid://cwf2pw6w0yaij"]
 
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="1_7d2h1"]
 [ext_resource type="Script" uid="uid://byyy06r3x4qa7" path="res://gui/scripts/options_menu.gd" id="1_ap0s0"]
@@ -11,6 +11,8 @@
 font_size = 24
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jmya"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvx1p"]
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -77,5 +79,44 @@ size_flags_vertical = 8
 theme_override_styles/normal = ExtResource("6_lvx1p")
 text = "Voltar"
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 60.0
+offset_right = 377.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_lvx1p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -20.0
+offset_right = 89.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Volume:"
+
+[node name="HSlider" type="HSlider" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.5
+step = 0.01
+value = 1.5
+
 [connection signal="mouse_entered" from="Panel2/VBoxContainer/back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel2/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Panel/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
