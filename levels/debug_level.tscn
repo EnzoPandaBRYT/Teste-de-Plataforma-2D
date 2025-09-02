@@ -89,4 +89,3 @@ tile_set = SubResource("TileSet_kyyvy")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_kyyvy")]
-visible = false

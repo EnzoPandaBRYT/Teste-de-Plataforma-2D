@@ -7,7 +7,7 @@ var actualValue = 5
 
 func _ready():
 	AudioPlayer.play_music_menu()
-	$Panel2/VBoxContainer/back.grab_focus()
+	#$Panel2/VBoxContainer/back.grab_focus()
 	
 func _on_button_mouse_entered() -> void:
 	AudioPlayer.play_FX(sfxSelectNormal, -9.0)

@@ -11,6 +11,31 @@ shader_parameter/lod = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gyae"]
 
+[sub_resource type="Animation" id="Animation_2d5mq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_6mmo3"]
 resource_name = "blur"
 length = 0.3
@@ -35,31 +60,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.805, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_2d5mq"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbhks"]
@@ -117,6 +117,7 @@ anchor_bottom = 0.835185
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_6mmo3")
+offset = Vector2(0, 50)
 metadata/_edit_use_anchors_ = true
 
 [node name="back" type="Button" parent="background/VBoxContainer"]
@@ -136,6 +137,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_kbhks")
 }
 
+[connection signal="focus_entered" from="background/VBoxContainer/back" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="background/VBoxContainer/back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="background/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="focus_entered" from="background/VBoxContainer/restart" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="background/VBoxContainer/restart" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="background/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="focus_entered" from="background/VBoxContainer/exit" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="background/VBoxContainer/exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="background/VBoxContainer/exit" to="." method="_on_exit_pressed"]

@@ -78,27 +78,33 @@ script = ExtResource("3_j7jgc")
 [node name="start" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../exit")
+focus_neighbor_bottom = NodePath("../options")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Jogar"
 
 [node name="options" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../start")
+focus_neighbor_bottom = NodePath("../exit")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Opções"
 
 [node name="exit" type="Button" parent="Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../options")
+focus_neighbor_bottom = NodePath("../start")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Sair"
 
 [connection signal="focus_entered" from="Panel2/container/start" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Panel2/container/start" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Panel2/container/start" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/start" to="." method="_on_start_pressed"]
 [connection signal="focus_entered" from="Panel2/container/options" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Panel2/container/options" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Panel2/container/options" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/options" to="." method="_on_options_pressed"]
 [connection signal="focus_entered" from="Panel2/container/exit" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Panel2/container/exit" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Panel2/container/exit" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel2/container/exit" to="." method="_on_exit_pressed"]

@@ -1,12 +1,16 @@
-v0.1.7:
-- Pulo ALTERADO:
-	- Agora, quando o jogador para de pressionar o botão de pulo, o personagem irá desacelerar subitamente;
+v0.1.8:
 
 - MENUS ADICIONADOS!:
-	- O Menu Inicial funciona, juntamente de seus botões!
-	
-- MÚSICAS ADICIONADAS!:
-	- Agora, o Menu Inicial e a Fase de Debug tem suas respectivas músicas!
+	- Menu de Opções e Pausa adicionados!
+		- Menu de Pausa: ESC (Escape)
+
+- EFEITOS SONOROS MODIFICADOS!:
+	- Agora, os menus não tem mais foco automático (teclado/controle), o que o faz também não tocar mais nenhum som pelo teclado ou controle.
+
+- COLISÕES ALTERADAS!:
+	- As colisões do jogador estava dando problemas, como escalar a parede ou pular mais alto que o normal. Isso foi corrigido agora ;)
+
+== Obrigado Arcus por ter indicado o vídeo de como fazer um save! Logo mais teremos.
 
 
 
@@ -32,4 +36,9 @@ v0.1.7:
 
 
 
-^-.-^ = Bob
+
+
+
+
+
+^`.´^ = Bolinha
