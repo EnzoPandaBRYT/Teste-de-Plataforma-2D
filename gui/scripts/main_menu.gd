@@ -6,7 +6,8 @@ extends Control
 func _ready():
 	AudioPlayer.play_music_menu()
 	#$Panel2/container/start.grab_focus()
-	
+	$AnimationPlayer2.play("blur_transition")
+
 func _on_focus_entered() -> void:
 	#AudioPlayer.play_FX(sfxSelectNormal, -9.0)
 	pass
@@ -25,3 +26,7 @@ func _on_mouse_entered() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
+
+func _on_animation_player_2_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "blur_transition":
+		$ColorRect2.visible = false

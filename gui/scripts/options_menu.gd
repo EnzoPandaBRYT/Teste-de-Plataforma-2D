@@ -8,6 +8,7 @@ var actualValue = 5
 func _ready():
 	AudioPlayer.play_music_menu()
 	#$Panel2/VBoxContainer/back.grab_focus()
+	$AnimationPlayer.play("blur_transition")
 	
 func _on_button_mouse_entered() -> void:
 	AudioPlayer.play_FX(sfxSelectNormal, -9.0)
@@ -17,3 +18,8 @@ func _on_back_pressed() -> void:
 	
 func _on_h_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "blur_transition":
+		$ColorRect.visible = false
