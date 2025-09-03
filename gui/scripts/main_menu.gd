@@ -1,7 +1,8 @@
 extends Control
 
 @onready var sfxSelectNormal = preload("res://sounds/sfx/Select.mp3")
-
+@onready var sfxStartSound = preload("res://sounds/sfx/Start-Sound.wav")
+var animation_finished = false
 
 func _ready():
 	AudioPlayer.play_music_menu()
@@ -14,6 +15,7 @@ func _on_focus_entered() -> void:
 
 func _on_start_pressed() -> void:
 	$AnimationPlayer.play("fade_out")
+	AudioPlayer.play_FX(sfxStartSound, -12.0)
 
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://gui/scenes/options_menu.tscn")
@@ -28,5 +30,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
 
 func _on_animation_player_2_animation_finished(anim_name: StringName) -> void:
+	animation_finished = true
 	if anim_name == "blur_transition":
 		$ColorRect2.visible = false

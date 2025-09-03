@@ -315,6 +315,17 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.805, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_6mmo3"]
 resource_name = "blur"
@@ -359,7 +370,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/1/path = NodePath("ColorRect2:material:shader_parameter/lod")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {

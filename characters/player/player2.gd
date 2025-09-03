@@ -12,6 +12,11 @@ func _idle() -> void: # Estado Inerte
 		
 	if _jump_action:
 		_change_state(_StateMachine.JUMP)
+	
+	if Input.is_action_just_pressed("crouch") and Input.is_action_just_pressed("jump"):
+		set_collision_mask_value(5, false)
+	else:
+		set_collision_mask_value(5, true)
 		
 
 func _walk() -> void:
