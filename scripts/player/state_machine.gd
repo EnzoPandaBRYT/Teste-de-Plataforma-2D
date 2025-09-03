@@ -13,6 +13,9 @@ var _enter_state := true # Variável
 var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.get_axis("move_left", "move_right")
 
+var _Crouch: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
+	get: return Input.is_action_pressed("crouch")
+
 @warning_ignore("unused_private_class_variable")
 var _jump_action: bool: # Sistema de Pulo
 	get: return Input.is_action_just_pressed("jump")
@@ -26,7 +29,6 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.STOMP_CHARGE: _stomp_charge()
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
 		_StateMachine.ATTACK_BASIC: _basic_attack()
-	
 
 	#print(_StateMachine)
 	#print(_state)

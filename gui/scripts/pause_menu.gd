@@ -24,7 +24,7 @@ func getEsc():
 	elif Input.is_action_just_pressed("pause_game") and get_tree().paused:
 		resume()
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	getEsc()
 
 func _on_back_pressed() -> void:
