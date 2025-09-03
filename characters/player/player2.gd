@@ -13,7 +13,7 @@ func _idle() -> void: # Estado Inerte
 	if _jump_action:
 		_change_state(_StateMachine.JUMP)
 	
-	if Input.is_action_just_pressed("crouch") and Input.is_action_just_pressed("jump"):
+	if Input.is_action_pressed("crouch"):
 		set_collision_mask_value(5, false)
 	else:
 		set_collision_mask_value(5, true)
@@ -34,15 +34,11 @@ func _walk() -> void:
 func _jump() -> void:
 	_enterState("jumping")
 		
-	if _Input and _jump_action and redVel:
+	if _Input and redVel:
 		_movement()
 	
 	if _jump_action:
 		_animated_sprite.play("jumping")
-		
-	if Input.is_action_pressed("crouch") and Input.is_action_just_pressed("use_power") and !is_on_floor():
-		_change_state(_StateMachine.STOMP_CHARGE)
-		stomp_charge = 0
 	
 	elif is_on_floor() and !_jump_action:
 		_change_state(_StateMachine.IDLE)
@@ -51,7 +47,7 @@ func _jump() -> void:
 		
 func player_movement():
 	# Pulo
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = _jump_speed
 
 	if Input.is_action_just_released("jump") and redVel:

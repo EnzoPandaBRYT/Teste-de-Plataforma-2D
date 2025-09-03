@@ -15,7 +15,7 @@ var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 
 @warning_ignore("unused_private_class_variable")
 var _jump_action: bool: # Sistema de Pulo
-	get: return Input.is_action_pressed("jump")
+	get: return Input.is_action_just_pressed("jump")
 
 func _physics_process(delta: float) -> void:
 	match _state: # State machine que, quando encontra o estado, executa uma função
@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.ATTACK_STOMP: _attack_stomp()
 		_StateMachine.ATTACK_BASIC: _basic_attack()
 	
+
 	#print(_StateMachine)
 	#print(_state)
 	#print("Is jumping?:" + str(_jump_action))
