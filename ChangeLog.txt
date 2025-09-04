@@ -1,16 +1,21 @@
-v0.1.8:
+v0.1.9:
 
-- MENUS ADICIONADOS!:
-	- Menu de Opções e Pausa adicionados!
-		- Menu de Pausa: ESC (Escape)
+- SISTEMA DE SAVE:
+	- O sistema de save foi completamente implementado e agora funciona assim:
+		- Por enquanto, salva apenas os dados de áudio.
+		- Se não tiver um arquivo com os dados (settings.ini), o código GameConfig irá criar um com as
+		configurações padrão.
 
-- EFEITOS SONOROS MODIFICADOS!:
-	- Agora, os menus não tem mais foco automático (teclado/controle), o que o faz também não tocar mais nenhum som pelo teclado ou controle.
+== GRANDE ATUALIZAÇÃO VINDO! ==
+- Sistema de Pontos, Novas fases, Backgrounds e Reformulações de Animações estão por vir!:
+	- O sistema de Save irá salvar não só as configurações, como também dados do jogador.
+	- As animações serão reformuladas por mim para torná-las mais flúidas.
+	- Irei adicionar um sistema de pontuação, com coletáveis pelo mapa.
+	- Novas fases com mecânicas podem ser adicionadas.
+	- Estou planejando adicionar um Plano de Fundo para as fases não ficarem "sem sal"!
+Isso é tudo! Agradecimento especial ao Arcus por tornar o sistema de Save uma realidade! :)
 
-- COLISÕES ALTERADAS!:
-	- As colisões do jogador estava dando problemas, como escalar a parede ou pular mais alto que o normal. Isso foi corrigido agora ;)
-
-== Obrigado Arcus por ter indicado o vídeo de como fazer um save! Logo mais teremos.
+== Obrigado Arcus por ter indicado o vídeo de como fazer um save! Agora TEMOS!
 
 
 

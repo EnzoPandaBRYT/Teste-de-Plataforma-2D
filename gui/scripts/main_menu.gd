@@ -26,7 +26,7 @@ func _on_exit_pressed() -> void:
 func _on_mouse_entered() -> void:
 	AudioPlayer.play_FX(sfxSelectNormal, -9.0)
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
 
 func _on_animation_player_2_animation_finished(anim_name: StringName) -> void:
