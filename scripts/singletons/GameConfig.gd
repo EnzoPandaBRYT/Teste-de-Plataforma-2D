@@ -24,6 +24,7 @@ func _ready() -> void:
 		# Master Volume
 		masterVolumeValue = config.get_value("audio", "masterVolume")
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(masterVolumeValue))
+		
 		# SFX Volume
 		sfxVolumeValue = config.get_value("audio", "sfxVolume")
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfxVolumeValue))

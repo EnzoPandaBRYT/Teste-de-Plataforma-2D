@@ -3,7 +3,7 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, RUN, JUMP, STOMP_CHARGE, ATTACK_STOMP, ATTACK_BASIC } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE } # Determina todos os Estados possíveis
 
 var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
@@ -26,9 +26,8 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.WALK: _walk()
 		_StateMachine.RUN: _run()
 		_StateMachine.JUMP: _jump()
-		_StateMachine.STOMP_CHARGE: _stomp_charge()
-		_StateMachine.ATTACK_STOMP: _attack_stomp()
-		_StateMachine.ATTACK_BASIC: _basic_attack()
+		_StateMachine.SLIME_TRANSFORM: _slime_transform()
+		_StateMachine.SLIME_IDLE: _slime_idle()
 
 	#print(_StateMachine)
 	#print(_state)
@@ -56,9 +55,8 @@ func _idle() -> void: pass
 func _walk() -> void: pass
 func _run() -> void: pass
 func _jump() -> void: pass
-func _stomp_charge() -> void: pass
-func _attack_stomp() -> void: pass
-func _basic_attack() -> void: pass
+func _slime_transform() -> void: pass
+func _slime_idle() -> void: pass
 
 func _movement() -> void:
 	if Input.is_action_pressed("run"):
@@ -71,12 +69,21 @@ func _movement() -> void:
 		_animated_sprite.flip_h = false
 	if _Input < 0:
 		_animated_sprite.flip_h = true
+		
+func _slime_movement() -> void:
+	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
+	
+	# Flipa o personagem dependendo da direção que _Input recebe
+	if _Input > 0:
+		_animated_sprite.flip_h = false
+	if _Input < 0:
+		_animated_sprite.flip_h = true
 
 func _stop_movement() -> void:
 	velocity.x = 0
 
 func _set_Gravity(delta: float) -> void:
-	if !is_on_floor() and _state != _StateMachine.STOMP_CHARGE:
+	if !is_on_floor():
 		velocity += get_gravity() * delta # Gravidade
 		
 func _reset_scene() -> void:

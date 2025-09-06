@@ -1,21 +1,10 @@
-v0.1.9:
+v0.1.9a:
 
-- SISTEMA DE SAVE:
-	- O sistema de save foi completamente implementado e agora funciona assim:
-		- Por enquanto, salva apenas os dados de áudio.
-		- Se não tiver um arquivo com os dados (settings.ini), o código GameConfig irá criar um com as
-		configurações padrão.
+- SLIME ADICIONADO!:
+	- Agora, um slime está disponível (sem animação)! Pressione 'F' para se transformar!
 
-== GRANDE ATUALIZAÇÃO VINDO! ==
-- Sistema de Pontos, Novas fases, Backgrounds e Reformulações de Animações estão por vir!:
-	- O sistema de Save irá salvar não só as configurações, como também dados do jogador.
-	- As animações serão reformuladas por mim para torná-las mais flúidas.
-	- Irei adicionar um sistema de pontuação, com coletáveis pelo mapa.
-	- Novas fases com mecânicas podem ser adicionadas.
-	- Estou planejando adicionar um Plano de Fundo para as fases não ficarem "sem sal"!
-Isso é tudo! Agradecimento especial ao Arcus por tornar o sistema de Save uma realidade! :)
-
-== Obrigado Arcus por ter indicado o vídeo de como fazer um save! Agora TEMOS!
+- ANIMAÇÕES MODIFICADAS!:
+	- As animações de andar foram modificadas! (De corrida virão logo!)
 
 
 
@@ -46,4 +35,4 @@ Isso é tudo! Agradecimento especial ao Arcus por tornar o sistema de Save uma r
 
 
 
-^`.´^ = Bolinha
+^o.o^ = Neguinha
