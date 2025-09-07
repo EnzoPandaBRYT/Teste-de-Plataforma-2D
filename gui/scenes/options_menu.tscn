@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwf2pw6w0yaij"]
+[gd_scene load_steps=17 format=3 uid="uid://cwf2pw6w0yaij"]
 
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="1_7d2h1"]
 [ext_resource type="Script" uid="uid://byyy06r3x4qa7" path="res://gui/scripts/options_menu.gd" id="1_ap0s0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/vboxcontainer_wiggle.gd" id="4_ap0s0"]
 [ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/blur.gdshader" id="4_utl4q"]
 [ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="6_lvx1p"]
+[ext_resource type="Script" uid="uid://nsn3o5mu1dcr" path="res://gui/scripts/sfx_slider.gd" id="7_0lqb7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_60md4"]
 font_size = 24
@@ -235,6 +236,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+script = ExtResource("7_0lqb7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_0lqb7")
@@ -250,6 +252,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_kbhks")
 }
 
+[connection signal="focus_entered" from="Panel2/VBoxContainer/back" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="Panel2/VBoxContainer/back" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel2/VBoxContainer/back" to="." method="_on_back_pressed"]
 [connection signal="drag_ended" from="MasterVolume/HBoxContainer/masterSlider" to="." method="_on_master_slider_drag_ended"]

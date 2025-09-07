@@ -270,7 +270,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 6.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idpv6"]
@@ -284,7 +284,7 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"idle"
+animation = &"walking"
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14

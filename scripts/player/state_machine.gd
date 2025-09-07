@@ -10,14 +10,21 @@ var _enter_state := true # Variável
 
 var locked = false
 var slime := false
+var redVel := true
 
 @onready var _animated_sprite = $anim
 
 var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.get_axis("move_left", "move_right")
+	
+var _ReverseInput: float: # Sistema de Input (Exclusivo do(s) jogador(es)
+	get: return Input.get_axis("move_left", "move_right") * -1
 
 var _Crouch: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.is_action_pressed("crouch")
+	
+var _Run: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
+	get: return Input.is_action_pressed("run")
 
 @warning_ignore("unused_private_class_variable")
 var _jump_action: bool: # Sistema de Pulo
@@ -32,7 +39,8 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.LOCKED: _locked()
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
-
+	
+	
 	#print(_StateMachine)
 	#print(_state)
 	#print("Is jumping?:" + str(_jump_action))

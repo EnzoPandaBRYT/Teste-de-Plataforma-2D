@@ -6,12 +6,12 @@ var animation_finished = false
 
 func _ready():
 	AudioPlayer.play_music_menu()
-	#$Panel2/container/start.grab_focus()
 	$AnimationPlayer2.play("blur_transition")
 
 func _on_focus_entered() -> void:
-	#AudioPlayer.play_FX(sfxSelectNormal, -9.0)
-	pass
+	if GeneralVars._ControllersConnected > 0:
+		AudioPlayer.play_FX(sfxSelectNormal, -9.0)
+
 
 func _on_start_pressed() -> void:
 	$AnimationPlayer.play("fade_out")
@@ -33,3 +33,5 @@ func _on_animation_player_2_animation_finished(anim_name: StringName) -> void:
 	animation_finished = true
 	if anim_name == "blur_transition":
 		$ColorRect2.visible = false
+		if Input.get_connected_joypads().size() > 0:
+			$Panel2/container/start.grab_focus()
