@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bah8hr1o8sgte" path="res://gui/scripts/pause_menu.gd" id="1_fo40p"]
 [ext_resource type="Script" uid="uid://do0v1ef5yjm2d" path="res://gui/scripts/pause_wiggle.gd" id="1_hbwxg"]
-[ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/pause_menu.gdshader" id="1_uhngd"]
+[ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/blur.gdshader" id="1_uhngd"]
 [ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/vboxcontainer_wiggle.gd" id="4_6mmo3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fo40p"]

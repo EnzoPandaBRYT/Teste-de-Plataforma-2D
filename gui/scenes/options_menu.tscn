@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cs3v4uofoj588" path="res://assets/images/backgroud.png" id="2_60md4"]
 [ext_resource type="Script" uid="uid://dlslxyv1v6jwp" path="res://gui/scripts/background.gd" id="2_wj55l"]
 [ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/vboxcontainer_wiggle.gd" id="4_ap0s0"]
-[ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/pause_menu.gdshader" id="4_utl4q"]
+[ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/blur.gdshader" id="4_utl4q"]
 [ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="6_lvx1p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_60md4"]

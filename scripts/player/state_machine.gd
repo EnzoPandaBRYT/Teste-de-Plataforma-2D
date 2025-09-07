@@ -3,10 +3,13 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, LOCKED, SLIME_TRANSFORM, SLIME_IDLE } # Determina todos os Estados possíveis
 
-var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
+var _state : _StateMachine = _StateMachine.LOCKED # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
+
+var locked = false
+var slime := false
 
 @onready var _animated_sprite = $anim
 
@@ -26,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.WALK: _walk()
 		_StateMachine.RUN: _run()
 		_StateMachine.JUMP: _jump()
+		_StateMachine.LOCKED: _locked()
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
 
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	player_movement() # Movimentação do personagem
 	move_and_slide()
 
-func _enterState(animation: String) -> void:
+func _enterState(animation: String) -> void: # Em suma, toca a animação que coloca lá no player.gd
 	if _enter_state:
 		_enter_state = false
 		_animated_sprite.play(animation)
@@ -55,10 +59,12 @@ func _idle() -> void: pass
 func _walk() -> void: pass
 func _run() -> void: pass
 func _jump() -> void: pass
+func _locked() -> void: pass
 func _slime_transform() -> void: pass
 func _slime_idle() -> void: pass
 
 func _movement() -> void:
+	
 	if Input.is_action_pressed("run"):
 		velocity.x = _Input * _speed * 1.5
 	else:
@@ -84,7 +90,10 @@ func _stop_movement() -> void:
 
 func _set_Gravity(delta: float) -> void:
 	if !is_on_floor():
-		velocity += get_gravity() * delta # Gravidade
+		if !slime:
+			velocity += get_gravity() * delta # Gravidade
+		else:
+			velocity += get_gravity() * delta * 1.25
 		
 func _reset_scene() -> void:
 	if Input.is_action_just_pressed("reset"):

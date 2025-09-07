@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://cs4ilsquggipi" path="res://scripts/managers/audio_player.gd" id="1_dbo67"]
 
 [node name="AudioPlayer" type="AudioStreamPlayer"]
+process_mode = 3
 script = ExtResource("1_dbo67")

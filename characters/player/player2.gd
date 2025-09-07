@@ -2,7 +2,6 @@ extends Character
 
 var stomp_charge := 0.0
 var redVel := true
-var slime := false
 var transforming := false
 
 func _idle() -> void: # Estado Inerte
@@ -90,14 +89,20 @@ func _on_anim_animation_finished() -> void:
 func player_movement():
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
-		velocity.y = _jump_speed
+		if !slime:
+			velocity.y = _jump_speed
+		else:
+			velocity.y = _jump_speed * 1.20
 
 	if Input.is_action_just_released("jump") and redVel:
 		redVel = false
-		velocity.y *= 1.1
-		velocity.x *= 0.5
-	
-	
-func _basic_attack() -> void:
-	_enterState("attack_basic")
+		if !slime:
+			velocity.y *= 1.1
+			velocity.x *= 0.5
+		else:
+			velocity.y *= 1.05
+			velocity.x *= 0.75
+
+func _locked():
+	_enterState("idle")
 	
