@@ -8,7 +8,7 @@ var animation_finished = false
 
 func _ready():
 	AudioPlayer.play_music_menu()
-	animationPlayer1.play_backwards("fade_out")
+	animationPlayer1.play("fade_in")
 	GeneralVars.gameExit = false
 	await get_tree().create_timer(1.0).timeout
 	$"Main Menu/ColorRect2".queue_free()
