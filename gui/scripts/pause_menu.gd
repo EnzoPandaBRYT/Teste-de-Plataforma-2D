@@ -9,6 +9,7 @@ func _ready() -> void:
 func resume():
 	$AnimationPlayer.play_backwards("blur")
 	get_tree().paused = false
+	await get_tree().create_timer(0.3).timeout
 	$".".visible = false
 	
 func pause():
@@ -36,6 +37,9 @@ func _on_restart_pressed() -> void:
 	
 func _on_exit_pressed() -> void:
 	resume()
+	GeneralVars.gameExit = true
+	$"../../AnimationPlayer".play("fade_out")
+	await get_tree().create_timer(1.8).timeout
 	get_tree().change_scene_to_file("res://gui/scenes/main_menu.tscn")
 
 func _on_button_focus_entered() -> void:

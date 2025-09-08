@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
 	
-	
 	#print(_StateMachine)
 	#print(_state)
 	#print("Is jumping?:" + str(_jump_action))

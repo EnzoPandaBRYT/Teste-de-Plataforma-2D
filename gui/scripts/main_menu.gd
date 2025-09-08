@@ -8,7 +8,10 @@ var animation_finished = false
 
 func _ready():
 	AudioPlayer.play_music_menu()
-	animationPlayer2.play("blur_transition")
+	animationPlayer1.play_backwards("fade_out")
+	GeneralVars.gameExit = false
+	await get_tree().create_timer(1.0).timeout
+	$"Main Menu/ColorRect2".queue_free()
 
 func _on_focus_entered() -> void:
 	if GeneralVars._ControllersConnected > 0:
@@ -18,6 +21,8 @@ func _on_focus_entered() -> void:
 func _on_start_pressed() -> void:
 	animationPlayer1.play("fade_out")
 	AudioPlayer.play_FX(sfxStartSound, -12.0)
+	await get_tree().create_timer(1.1).timeout
+	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
 
 func _on_options_pressed() -> void:
 	$section.play("change_options")
@@ -27,9 +32,7 @@ func _on_exit_pressed() -> void:
 
 func _on_mouse_entered() -> void:
 	AudioPlayer.play_FX(sfxSelectNormal, -9.0)
-
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://levels/debug_level.tscn")
+	
 
 func _on_animation_player_2_animation_finished(anim_name: StringName) -> void:
 	animation_finished = true

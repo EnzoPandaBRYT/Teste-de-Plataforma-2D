@@ -86,6 +86,11 @@ func _on_anim_animation_finished() -> void:
 		slime = false
 
 func player_movement():
+	if GeneralVars.gameExit:
+		_change_state(_StateMachine.LOCKED)
+		velocity.y = 0
+		velocity.x = 0
+	
 	var dir = (_ReverseInput * _Input) * -1
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
@@ -111,5 +116,8 @@ func player_movement():
 			anim.speed_scale = 0.5
 
 func _locked():
-	_enterState("idle")
+	if !is_on_floor():
+		_enterState("jumping")
+	else:
+		_enterState("idle")
 	

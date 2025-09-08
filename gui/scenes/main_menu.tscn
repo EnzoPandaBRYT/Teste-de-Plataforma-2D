@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1ep3slxen4t7"]
+[gd_scene load_steps=31 format=3 uid="uid://b1ep3slxen4t7"]
 
 [ext_resource type="Script" uid="uid://qfmcruyyj3o3" path="res://gui/scripts/main_menu.gd" id="1_dovto"]
 [ext_resource type="Script" uid="uid://c6oxnsievle4c" path="res://gui/scripts/game_title.gd" id="2_b4e1n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dlslxyv1v6jwp" path="res://gui/scripts/background.gd" id="7_t6cje"]
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="8_brwq4"]
 [ext_resource type="Script" uid="uid://nsn3o5mu1dcr" path="res://gui/scripts/sfx_slider.gd" id="9_vu40p"]
+[ext_resource type="StyleBox" uid="uid://d2nhairpwqpll" path="res://gui/styles/focus.tres" id="10_xax1p"]
 [ext_resource type="Texture2D" uid="uid://c7kng6v428hyb" path="res://assets/characters/optic-cog/Idle.png" id="11_vu40p"]
 [ext_resource type="Script" uid="uid://c8s02luebjh4f" path="res://gui/scripts/sprite_wiggle.gd" id="12_aefp4"]
 [ext_resource type="Script" uid="uid://beqm5e0fhexnq" path="res://gui/scripts/sprite_wiggle_low.gd" id="13_rlxh0"]
@@ -27,51 +28,51 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Main Menu/ColorRect:color:r")
+tracks/0/path = NodePath("Main Menu/gameTitle:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Main Menu/ColorRect:color:g")
+tracks/1/path = NodePath("Main Menu/gameTitle:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Main Menu/ColorRect:color:b")
+tracks/2/path = NodePath("Main Menu/gameTitle:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Main Menu/ColorRect:color:a")
+tracks/3/path = NodePath("Main Menu/gameTitle:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Main Menu/gameTitle:modulate:r")
+tracks/4/path = NodePath("Main Menu/Panel2:modulate:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -82,7 +83,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Main Menu/gameTitle:modulate:g")
+tracks/5/path = NodePath("Main Menu/Panel2:modulate:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -93,7 +94,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Main Menu/gameTitle:modulate:b")
+tracks/6/path = NodePath("Main Menu/Panel2:modulate:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -104,7 +105,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Main Menu/gameTitle:modulate:a")
+tracks/7/path = NodePath("Main Menu/Panel2:modulate:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -115,45 +116,12 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Main Menu/Panel2:modulate:r")
+tracks/8/path = NodePath("Main Menu/ColorRect2:material:shader_parameter/lod")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Main Menu/Panel2:modulate:g")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Main Menu/Panel2:modulate:b")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Main Menu/Panel2:modulate:a")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.815, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -291,6 +259,17 @@ tracks/11/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Main Menu/ColorRect2:material:shader_parameter/lod")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.815, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.466667)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jku36"]
 _data = {
@@ -399,19 +378,6 @@ font_size = 24
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rlxh0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xax1p"]
-
-[sub_resource type="Animation" id="Animation_noene"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_rmhc1"]
-resource_name = "blur_transition"
-length = 0.3
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqjkj"]
-_data = {
-&"RESET": SubResource("Animation_noene"),
-&"blur_transition": SubResource("Animation_rmhc1")
-}
 
 [sub_resource type="Animation" id="Animation_brwq4"]
 length = 0.001
@@ -547,6 +513,7 @@ layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../exit")
 focus_neighbor_bottom = NodePath("../options")
+theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Jogar"
 
@@ -555,6 +522,7 @@ layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../start")
 focus_neighbor_bottom = NodePath("../exit")
+theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Opções"
 
@@ -563,6 +531,7 @@ layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../options")
 focus_neighbor_bottom = NodePath("../start")
+theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Sair"
 
@@ -640,8 +609,45 @@ metadata/_edit_use_anchors_ = true
 [node name="back" type="Button" parent="Options/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Voltar"
+
+[node name="MasterVolume2" type="Panel" parent="Options"]
+anchors_preset = -1
+anchor_left = 0.208333
+anchor_top = 0.222222
+anchor_right = 0.785417
+anchor_bottom = 0.37037
+offset_left = 481.0
+offset_top = 72.0001
+offset_right = 481.0
+offset_bottom = 72.0001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_xax1p")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/MasterVolume2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285198
+anchor_top = 0.025
+anchor_right = 0.931408
+anchor_bottom = 1.025
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Options/MasterVolume2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tela Cheia:"
+
+[node name="CheckBox" type="CheckBox" parent="Options/MasterVolume2/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = ExtResource("10_xax1p")
 
 [node name="MasterVolume" type="Panel" parent="Options"]
 anchors_preset = -1
@@ -714,11 +720,6 @@ size_flags_vertical = 4
 scrollable = false
 script = ExtResource("9_vu40p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Options"]
-libraries = {
-&"": SubResource("AnimationLibrary_cqjkj")
-}
-
 [node name="optic-cog" type="Sprite2D" parent="Options"]
 position = Vector2(879, 80)
 texture = ExtResource("11_vu40p")
@@ -755,11 +756,10 @@ libraries = {
 [connection signal="focus_entered" from="Main Menu/Panel2/container/exit" to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="Main Menu/Panel2/container/exit" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main Menu/Panel2/container/exit" to="." method="_on_exit_pressed"]
-[connection signal="animation_finished" from="Main Menu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Main Menu/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
 [connection signal="pressed" from="Options/Panel2/VBoxContainer/back" to="Options" method="_on_back_pressed"]
+[connection signal="toggled" from="Options/MasterVolume2/HBoxContainer/CheckBox" to="Options" method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_drag_ended"]
 [connection signal="value_changed" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_value_changed"]
 [connection signal="drag_ended" from="Options/SFXVolume/HBoxContainer/sfxSlider" to="Options" method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="Options/SFXVolume/HBoxContainer/sfxSlider" to="Options" method="_on_sfx_slider_value_changed"]
-[connection signal="animation_finished" from="Options/AnimationPlayer" to="Options" method="_on_animation_player_animation_finished"]

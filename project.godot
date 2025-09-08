@@ -20,6 +20,7 @@ run/max_fps=240
 AudioPlayer="*res://sounds/managers/AudioPlayer.tscn"
 GameConfig="*res://scripts/singletons/GameConfig.gd"
 GeneralVars="*res://scripts/singletons/GeneralVars.gd"
+PlayerSM="*res://scripts/player/state_machine.gd"
 
 [display]
 

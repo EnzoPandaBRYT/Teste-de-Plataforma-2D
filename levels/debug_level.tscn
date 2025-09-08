@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cne65pmsryim5"]
+[gd_scene load_steps=14 format=4 uid="uid://cne65pmsryim5"]
 
 [ext_resource type="PackedScene" uid="uid://d1vdky2eulpoe" path="res://characters/player/player.tscn" id="1_rggqk"]
 [ext_resource type="Script" uid="uid://deiwssmv6ufgs" path="res://levels/debug_level.gd" id="1_spoyw"]
@@ -242,10 +242,48 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_kwkfn"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.502305, -0.5, 0.333333, 1.44298, -100, -1, 80.7705, 1.1, 5.5),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer2/blur:material:shader_parameter/lod")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwkfn"]
 _data = {
 &"RESET": SubResource("Animation_g5ckd"),
-&"fade_in": SubResource("Animation_kyyvy")
+&"fade_in": SubResource("Animation_kyyvy"),
+&"fade_out": SubResource("Animation_kwkfn")
 }
 
 [node name="debugLevel" type="Node2D"]
@@ -274,7 +312,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("1_rggqk")]
-position = Vector2(739, -179)
+position = Vector2(745, -240)
 scale = Vector2(2, 2)
 
 [node name="ground" type="Node" parent="."]

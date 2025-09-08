@@ -40,3 +40,13 @@ func load_audio_settings():
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
+	
+func save_video_settings(key: String, value):
+	config.set_value("video", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_video_settings():
+	var video_settings = {}
+	for key in config.get_section_keys("video"):
+		video_settings[key] = config.get_value("video", key)
+	return video_settings
