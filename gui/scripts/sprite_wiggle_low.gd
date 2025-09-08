@@ -1,0 +1,23 @@
+extends Sprite2D
+
+@export var amplitude: float = 2.0
+@export var rotation_strength: float = 1.2
+@export var speed: float = 2
+
+var time: float = 0.0
+var base_position: Vector2
+
+func _ready() -> void:
+	# guarda a posição inicial (já com o offset aplicado)
+	base_position = position + offset
+	position = base_position
+
+func _process(delta: float) -> void:
+	time += delta * speed
+
+	# offsets em relação à posição base
+	var x = cos(time * 0.8) * amplitude * 0.8
+	var y = sin(time) * amplitude
+
+	position = base_position + Vector2(x, y)
+	rotation = deg_to_rad(sin(time * 1.9) * rotation_strength)

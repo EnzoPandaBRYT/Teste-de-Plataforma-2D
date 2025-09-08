@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwf2pw6w0yaij"]
+[gd_scene load_steps=16 format=3 uid="uid://cwf2pw6w0yaij"]
 
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="1_7d2h1"]
 [ext_resource type="Script" uid="uid://byyy06r3x4qa7" path="res://gui/scripts/options_menu.gd" id="1_ap0s0"]
@@ -45,32 +45,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_6mmo3"]
-resource_name = "blur"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 0.805, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
 [sub_resource type="Animation" id="Animation_utl4q"]
 resource_name = "blur_transition"
 length = 0.3
@@ -100,7 +74,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbhks"]
 _data = {
 &"RESET": SubResource("Animation_2d5mq"),
-&"blur": SubResource("Animation_6mmo3"),
 &"blur_transition": SubResource("Animation_utl4q")
 }
 
@@ -121,14 +94,10 @@ script = ExtResource("2_wj55l")
 [node name="options" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.501083
-anchor_top = 0.114815
-anchor_right = 0.501083
-anchor_bottom = 0.114815
-offset_left = -72.52
-offset_top = -15.0
-offset_right = 72.52
-offset_bottom = 15.0
+anchor_left = 0.35
+anchor_top = 0.0592594
+anchor_right = 0.652166
+anchor_bottom = 0.170371
 grow_horizontal = 2
 grow_vertical = 2
 text = "Opções"
@@ -151,17 +120,17 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_6jmya")
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.91
-anchor_right = 0.5
-anchor_bottom = 0.91
-offset_left = -30.0
-offset_top = -52.02
-offset_right = 30.0
-offset_bottom = -24.02
+anchor_left = 0.420833
+anchor_top = 0.603604
+anchor_right = 0.579167
+anchor_bottom = 0.801802
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("4_ap0s0")
+metadata/_edit_use_anchors_ = true
 
 [node name="back" type="Button" parent="Panel2/VBoxContainer"]
 layout_mode = 2
@@ -171,14 +140,15 @@ text = "Voltar"
 
 [node name="MasterVolume" type="Panel" parent="."]
 layout_mode = 2
-offset_left = 100.0
-offset_top = 60.0
-offset_right = 377.0
-offset_bottom = 100.0
+anchor_left = 0.208333
+anchor_top = 0.222222
+anchor_right = 0.785417
+anchor_bottom = 0.37037
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_lvx1p")
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MasterVolume"]
 layout_mode = 1
@@ -201,19 +171,16 @@ size_flags_vertical = 4
 
 [node name="SFXVolume" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -138.5
-offset_top = -35.0
-offset_right = 138.5
-offset_bottom = 5.0
+anchors_preset = -1
+anchor_left = 0.211458
+anchor_top = 0.37037
+anchor_right = 0.788542
+anchor_bottom = 0.518519
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_lvx1p")
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SFXVolume"]
 layout_mode = 1
@@ -236,6 +203,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+scrollable = false
 script = ExtResource("7_0lqb7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
