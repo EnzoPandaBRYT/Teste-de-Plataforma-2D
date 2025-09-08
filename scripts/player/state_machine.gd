@@ -3,9 +3,9 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, RUN, JUMP, LOCKED, SLIME_TRANSFORM, SLIME_IDLE } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK } # Determina todos os Estados possíveis
 
-var _state : _StateMachine = _StateMachine.LOCKED # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
+var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
 
 var locked = false
@@ -36,12 +36,13 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.WALK: _walk()
 		_StateMachine.RUN: _run()
 		_StateMachine.JUMP: _jump()
-		_StateMachine.LOCKED: _locked()
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
+		_StateMachine.SLIME_WALK: _slime_idle()
 	
-	#print(_StateMachine)
-	#print(_state)
+	print(_StateMachine)
+	print(_state)
+	print(GeneralVars.gameExit)
 	#print("Is jumping?:" + str(_jump_action))
 	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
@@ -66,9 +67,9 @@ func _idle() -> void: pass
 func _walk() -> void: pass
 func _run() -> void: pass
 func _jump() -> void: pass
-func _locked() -> void: pass
 func _slime_transform() -> void: pass
 func _slime_idle() -> void: pass
+func _slime_walk() -> void: pass
 
 func _movement() -> void:
 	
@@ -76,15 +77,6 @@ func _movement() -> void:
 		velocity.x = _Input * _speed * 1.5
 	else:
 		velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
-	
-	# Flipa o personagem dependendo da direção que _Input recebe
-	if _Input > 0:
-		_animated_sprite.flip_h = false
-	if _Input < 0:
-		_animated_sprite.flip_h = true
-		
-func _slime_movement() -> void:
-	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
 	# Flipa o personagem dependendo da direção que _Input recebe
 	if _Input > 0:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Panda Platform"
-run/main_scene="uid://b1ep3slxen4t7"
+run/main_scene="uid://grujarr5b35d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=240
 
@@ -103,10 +103,6 @@ enter={
 
 [layer_names]
 
-2d_render/layer_1="player"
-2d_render/layer_2="ground"
-2d_render/layer_3="items"
-2d_render/layer_4="enemies"
 2d_physics/layer_1="player"
 2d_physics/layer_2="ground"
 2d_physics/layer_3="items"

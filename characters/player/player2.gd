@@ -1,6 +1,7 @@
 extends Character
 
 @onready var anim = $anim
+@onready var collision_morph = $collision_morph
 
 var stomp_charge := 0.0
 var transforming := false
@@ -63,19 +64,29 @@ func _slime_transform() -> void:
 	_enterState("slime_transform")
 	
 	if slime == false:
-		print("Slime Falso")
 		transforming = true
 		_animated_sprite.play("slime_transform")
+		collision_morph.play("player-to-slime")
 	else:
-		print("Slime Verdadeiro")
 		transforming = false
 		_animated_sprite.play_backwards("slime_transform")
+		collision_morph.play_backwards("player-to-slime")
 
 func _slime_idle() -> void:
-	_slime_movement()
+	_enterState("slime_idle")
+	if _Input:
+		_change_state(_StateMachine.SLIME_WALK)
 	
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
+
+func _slime_walk() -> void:
+	_slime_movement()
+	if _Input:
+		_enterState("slime_walk")
+		
+	else:
+		_change_state(_StateMachine.SLIME_IDLE)
 	
 func _on_anim_animation_finished() -> void:
 	if _state == _StateMachine.SLIME_TRANSFORM and transforming:
@@ -87,9 +98,8 @@ func _on_anim_animation_finished() -> void:
 
 func player_movement():
 	if GeneralVars.gameExit:
-		_change_state(_StateMachine.LOCKED)
-		velocity.y = 0
-		velocity.x = 0
+		_stop_movement()
+		
 	
 	var dir = (_ReverseInput * _Input) * -1
 	# Pulo
@@ -115,9 +125,11 @@ func player_movement():
 		else:
 			anim.speed_scale = 0.5
 
-func _locked():
-	if !is_on_floor():
-		_enterState("jumping")
-	else:
-		_enterState("idle")
+func _slime_movement() -> void:
+	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
+	# Flipa o personagem dependendo da direção que _Input recebe
+	if _Input > 0:
+		_animated_sprite.flip_h = false
+	if _Input < 0:
+		_animated_sprite.flip_h = true

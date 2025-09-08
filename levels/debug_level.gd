@@ -11,3 +11,8 @@ func _ready() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_in":
 		player._change_state(player._StateMachine.IDLE)
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	if anim_name == "fade_in":
+		player._stop_movement()

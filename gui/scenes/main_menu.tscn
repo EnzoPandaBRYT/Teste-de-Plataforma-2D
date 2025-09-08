@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1ep3slxen4t7"]
+[gd_scene load_steps=29 format=3 uid="uid://b1ep3slxen4t7"]
 
 [ext_resource type="Script" uid="uid://qfmcruyyj3o3" path="res://gui/scripts/main_menu.gd" id="1_dovto"]
 [ext_resource type="Script" uid="uid://c6oxnsievle4c" path="res://gui/scripts/game_title.gd" id="2_b4e1n"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c7kng6v428hyb" path="res://assets/characters/optic-cog/Idle.png" id="11_vu40p"]
 [ext_resource type="Script" uid="uid://c8s02luebjh4f" path="res://gui/scripts/sprite_wiggle.gd" id="12_aefp4"]
 [ext_resource type="Script" uid="uid://beqm5e0fhexnq" path="res://gui/scripts/sprite_wiggle_low.gd" id="13_rlxh0"]
+[ext_resource type="Texture2D" uid="uid://cdkg111gkepoo" path="res://gui/assets/Slider-Test.png" id="13_voder"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71m5h"]
 
@@ -21,97 +22,53 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jku36"]
 shader = ExtResource("6_q8cv4")
-shader_parameter/lod = 0.0
+shader_parameter/lod = 0.815
 
-[sub_resource type="Animation" id="Animation_q8cv4"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_xax1p"]
+resource_name = "fade_in"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Main Menu/gameTitle:modulate:r")
+tracks/0/path = NodePath("MainMenu/canvas/black:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Main Menu/gameTitle:modulate:g")
+tracks/1/path = NodePath("MainMenu/gameTitle:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Main Menu/gameTitle:modulate:b")
+tracks/2/path = NodePath("MainMenu/Panel2:modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Main Menu/gameTitle:modulate:a")
+tracks/3/path = NodePath("MainMenu/canvas/blur:material:shader_parameter/lod")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Main Menu/Panel2:modulate:r")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Main Menu/Panel2:modulate:g")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Main Menu/Panel2:modulate:b")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Main Menu/Panel2:modulate:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.815, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_7jyi1"]
@@ -119,62 +76,62 @@ resource_name = "fade_out"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Main Menu/ColorRect:color:r")
+tracks/0/path = NodePath("MainMenu/canvas/black:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Main Menu/ColorRect:color:g")
+tracks/1/path = NodePath("MainMenu/gameTitle:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Main Menu/ColorRect:color:b")
+tracks/2/path = NodePath("MainMenu/gameTitle:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Main Menu/ColorRect:color:a")
+tracks/3/path = NodePath("MainMenu/gameTitle:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Main Menu/gameTitle:modulate:r")
+tracks/4/path = NodePath("MainMenu/gameTitle:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Main Menu/gameTitle:modulate:g")
+tracks/5/path = NodePath("MainMenu/Panel2:modulate:r")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -185,7 +142,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Main Menu/gameTitle:modulate:b")
+tracks/6/path = NodePath("MainMenu/Panel2:modulate:g")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -196,120 +153,39 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Main Menu/gameTitle:modulate:a")
+tracks/7/path = NodePath("MainMenu/Panel2:modulate:b")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Main Menu/Panel2:modulate:r")
+tracks/8/path = NodePath("MainMenu/Panel2:modulate:a")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/9/type = "bezier"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Main Menu/Panel2:modulate:g")
+tracks/9/path = NodePath("MainMenu/canvas/blur:material:shader_parameter/lod")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Main Menu/Panel2:modulate:b")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Main Menu/Panel2:modulate:a")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Main Menu/ColorRect2:material:shader_parameter/lod")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.815, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.466667)
 }
 
-[sub_resource type="Animation" id="Animation_xax1p"]
-resource_name = "fade_in"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main Menu/ColorRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main Menu/gameTitle:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Main Menu/Panel2:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Main Menu/ColorRect2:material:shader_parameter/lod")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.815, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.5, 1)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jku36"]
 _data = {
-&"RESET": SubResource("Animation_q8cv4"),
 &"fade_in": SubResource("Animation_xax1p"),
 &"fade_out": SubResource("Animation_7jyi1")
 }
@@ -321,30 +197,13 @@ font_size = 24
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xax1p"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noene"]
+texture = ExtResource("13_voder")
+texture_margin_right = 25.0
+axis_stretch_horizontal = 1
+
 [sub_resource type="Animation" id="Animation_brwq4"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("camera:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("camera:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_t6cje"]
 resource_name = "change_options"
@@ -387,27 +246,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dovto")
 
-[node name="Main Menu" type="Node" parent="."]
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
 
-[node name="Backgroud" type="Sprite2D" parent="Main Menu"]
-position = Vector2(240, 135)
-texture = ExtResource("4_71m5h")
+[node name="MainMenu" type="Node" parent="."]
 
-[node name="optic-cog" type="Sprite2D" parent="Main Menu"]
+[node name="optic-cog" type="Sprite2D" parent="MainMenu"]
 position = Vector2(432, 44)
 scale = Vector2(0.539063, 0.539063)
 texture = ExtResource("11_vu40p")
 script = ExtResource("12_aefp4")
 
-[node name="ColorRect" type="ColorRect" parent="Main Menu"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
+[node name="Backgroud" type="Sprite2D" parent="MainMenu"]
+position = Vector2(240, 135)
+texture = ExtResource("4_71m5h")
 
-[node name="background" type="Panel" parent="Main Menu"]
+[node name="background" type="Panel" parent="MainMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -415,7 +269,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_71m5h")
 
-[node name="gameTitle" type="Label" parent="Main Menu"]
+[node name="gameTitle" type="Label" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.15
@@ -432,7 +287,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_b4e1n")
 
-[node name="Panel2" type="Panel" parent="Main Menu"]
+[node name="Panel2" type="Panel" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -444,7 +300,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_dovto")
 
-[node name="container" type="VBoxContainer" parent="Main Menu/Panel2"]
+[node name="container" type="VBoxContainer" parent="MainMenu/Panel2"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -456,7 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_j7jgc")
 
-[node name="start" type="Button" parent="Main Menu/Panel2/container"]
+[node name="start" type="Button" parent="MainMenu/Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../exit")
@@ -465,7 +321,7 @@ theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Jogar"
 
-[node name="options" type="Button" parent="Main Menu/Panel2/container"]
+[node name="options" type="Button" parent="MainMenu/Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../start")
@@ -474,7 +330,7 @@ theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Opções"
 
-[node name="exit" type="Button" parent="Main Menu/Panel2/container"]
+[node name="exit" type="Button" parent="MainMenu/Panel2/container"]
 layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_top = NodePath("../options")
@@ -483,7 +339,9 @@ theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Sair"
 
-[node name="ColorRect2" type="ColorRect" parent="Main Menu"]
+[node name="canvas" type="CanvasLayer" parent="MainMenu"]
+
+[node name="blur" type="ColorRect" parent="MainMenu/canvas"]
 material = SubResource("ShaderMaterial_jku36")
 anchors_preset = 15
 anchor_right = 1.0
@@ -491,8 +349,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Main Menu"]
+[node name="black" type="ColorRect" parent="MainMenu/canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
+physics_interpolation_mode = 2
+reset_on_save = false
 root_node = NodePath("../..")
+callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_jku36")
 }
@@ -659,6 +528,8 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_noene")
+value = 100.0
 scrollable = false
 script = ExtResource("9_vu40p")
 
@@ -681,23 +552,21 @@ scale = Vector2(0.16, 0.16)
 texture = ExtResource("11_vu40p")
 script = ExtResource("13_rlxh0")
 
-[node name="camera" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="section" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_vu40p")
 }
 
-[connection signal="focus_entered" from="Main Menu/Panel2/container/start" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Main Menu/Panel2/container/start" to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="Main Menu/Panel2/container/start" to="." method="_on_start_pressed"]
-[connection signal="focus_entered" from="Main Menu/Panel2/container/options" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Main Menu/Panel2/container/options" to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="Main Menu/Panel2/container/options" to="." method="_on_options_pressed"]
-[connection signal="focus_entered" from="Main Menu/Panel2/container/exit" to="." method="_on_focus_entered"]
-[connection signal="mouse_entered" from="Main Menu/Panel2/container/exit" to="." method="_on_mouse_entered"]
-[connection signal="pressed" from="Main Menu/Panel2/container/exit" to="." method="_on_exit_pressed"]
+[connection signal="focus_entered" from="MainMenu/Panel2/container/start" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="MainMenu/Panel2/container/start" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="MainMenu/Panel2/container/start" to="." method="_on_start_pressed"]
+[connection signal="focus_entered" from="MainMenu/Panel2/container/options" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="MainMenu/Panel2/container/options" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="MainMenu/Panel2/container/options" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="MainMenu/Panel2/container/exit" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="MainMenu/Panel2/container/exit" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="MainMenu/Panel2/container/exit" to="." method="_on_exit_pressed"]
+[connection signal="animation_finished" from="MainMenu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Options/Panel2/VBoxContainer/back" to="Options" method="_on_back_pressed"]
 [connection signal="toggled" from="Options/MasterVolume2/HBoxContainer/CheckBox" to="Options" method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_drag_ended"]

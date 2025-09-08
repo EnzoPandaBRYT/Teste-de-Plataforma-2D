@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=52 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
 [ext_resource type="Texture2D" uid="uid://ci706ygkm6io2" path="res://assets/characters/player/glitchy'/Idle.png" id="5_idpv6"]
+[ext_resource type="Texture2D" uid="uid://dk5takl1uvkqv" path="res://assets/characters/player/glitchy'/Slime - Walk.png" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://r0a64xe555sf" path="res://assets/characters/player/glitchy'/Jump.png" id="6_idpv6"]
 [ext_resource type="Texture2D" uid="uid://c52k73sosnuqk" path="res://assets/characters/player/glitchy'/Idle - Soul.png" id="6_rpf03"]
 [ext_resource type="Texture2D" uid="uid://birmau8c62h3h" path="res://assets/characters/player/glitchy'/Walk 2.png" id="8_idpv6"]
@@ -119,6 +120,26 @@ region = Rect2(384, 64, 64, 64)
 atlas = ExtResource("5_c6leb")
 region = Rect2(448, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gro5v"]
+atlas = ExtResource("6_dirf7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwr0q"]
+atlas = ExtResource("6_dirf7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cosaq"]
+atlas = ExtResource("6_dirf7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bakn2"]
+atlas = ExtResource("6_dirf7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xk8k"]
+atlas = ExtResource("6_dirf7")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqopd"]
 atlas = ExtResource("8_idpv6")
 region = Rect2(0, 0, 64, 64)
@@ -196,6 +217,11 @@ animations = [{
 "name": &"jumping",
 "speed": 4.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"slime_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dirf7")
@@ -251,6 +277,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gro5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwr0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cosaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bakn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xk8k")
+}],
+"loop": true,
+"name": &"slime_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gqopd")
 }, {
 "duration": 1.0,
@@ -276,6 +322,84 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idpv6"]
 size = Vector2(9, 17.8)
 
+[sub_resource type="Animation" id="Animation_idpv6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colission:shape:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("colission:shape:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(17.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("colission:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.18868, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_dirf7"]
+resource_name = "player-to-slime"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colission:shape:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("colission:shape:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(17.8, -0.25, 0, 0.25, 0, 4.71132, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("colission:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.18868, -0.25, 0, 0.25, 0, 5.35566, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpf03"]
+_data = {
+&"RESET": SubResource("Animation_idpv6"),
+&"player-to-slime": SubResource("Animation_dirf7")
+}
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 30
 script = ExtResource("1_g1dw6")
@@ -284,7 +408,7 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"walking"
+animation = &"slime_idle"
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
@@ -297,5 +421,10 @@ zoom = Vector2(2, 2)
 process_callback = 0
 limit_left = -200
 position_smoothing_enabled = true
+
+[node name="collision_morph" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rpf03")
+}
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

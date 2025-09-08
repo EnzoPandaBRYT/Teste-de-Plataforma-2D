@@ -1,7 +1,8 @@
 extends AudioStreamPlayer
 
 #Music
-const menu_music = preload("res://sounds/music/Creatones - My Home (No Fades).mp3")
+#const menu_music = preload("res://sounds/music/Creatones - My Home (No Fades).mp3")
+const menu_music = preload("res://sounds/cutscenes/Provisory-Main-Theme.mp3")
 const level_1 = preload("res://sounds/music/A New Chance to Myself.mp3")
 
 func _play_music(music: AudioStream, volume = -9.0):
