@@ -38,12 +38,8 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.JUMP: _jump()
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
-		_StateMachine.SLIME_WALK: _slime_idle()
-	
-	print(_StateMachine)
-	print(_state)
-	print(GeneralVars.gameExit)
-	#print("Is jumping?:" + str(_jump_action))
+		_StateMachine.SLIME_WALK: _slime_walk()
+
 	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
@@ -61,6 +57,7 @@ func _change_state(new_state: _StateMachine) -> void:
 		_enter_state = true
 
 func player_movement() -> void: pass
+func slime_movement() -> void: pass
 
 # Estados possíveis dos personagens
 func _idle() -> void: pass
@@ -77,6 +74,15 @@ func _movement() -> void:
 		velocity.x = _Input * _speed * 1.5
 	else:
 		velocity.x = _Input * _speed # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
+	
+	# Flipa o personagem dependendo da direção que _Input recebe
+	if _Input > 0:
+		_animated_sprite.flip_h = false
+	if _Input < 0:
+		_animated_sprite.flip_h = true
+
+func _slime_movement() -> void:
+	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
 	# Flipa o personagem dependendo da direção que _Input recebe
 	if _Input > 0:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=57 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
 [ext_resource type="Texture2D" uid="uid://ci706ygkm6io2" path="res://assets/characters/player/glitchy'/Idle.png" id="5_idpv6"]
+[ext_resource type="Texture2D" uid="uid://cug0ogwydxrsw" path="res://assets/characters/player/glitchy'/Slime - Idle.png" id="5_rpf03"]
 [ext_resource type="Texture2D" uid="uid://dk5takl1uvkqv" path="res://assets/characters/player/glitchy'/Slime - Walk.png" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://r0a64xe555sf" path="res://assets/characters/player/glitchy'/Jump.png" id="6_idpv6"]
 [ext_resource type="Texture2D" uid="uid://c52k73sosnuqk" path="res://assets/characters/player/glitchy'/Idle - Soul.png" id="6_rpf03"]
@@ -54,6 +55,22 @@ region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpo3a"]
 atlas = ExtResource("6_idpv6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi0sd"]
+atlas = ExtResource("5_rpf03")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jysfx"]
+atlas = ExtResource("5_rpf03")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tbpq"]
+atlas = ExtResource("5_rpf03")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1mdy"]
+atlas = ExtResource("5_rpf03")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dirf7"]
@@ -217,7 +234,19 @@ animations = [{
 "name": &"jumping",
 "speed": 4.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi0sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jysfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tbpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1mdy")
+}],
 "loop": true,
 "name": &"slime_idle",
 "speed": 5.0
@@ -293,7 +322,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"slime_walk",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -408,7 +437,8 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"slime_idle"
+animation = &"slime_walk"
+frame_progress = 0.841609
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
@@ -426,5 +456,3 @@ position_smoothing_enabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_rpf03")
 }
-
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

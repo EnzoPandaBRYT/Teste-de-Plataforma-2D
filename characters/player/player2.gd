@@ -4,16 +4,15 @@ extends Character
 @onready var collision_morph = $collision_morph
 
 var stomp_charge := 0.0
-var transforming := false
 
 func _idle() -> void: # Estado Inerte
 	_enterState("idle") # Nome da Animação que será tocada
 	_stop_movement() # Anula qualquer movimento para 0
 
-	if _Input: # Se tiver Input, então:
+	if _Input and !slime: # Se tiver Input, então:
 		_change_state(_StateMachine.WALK)
 		
-	if _jump_action and !_Crouch:
+	if _jump_action and !_Crouch and !slime:
 		_change_state(_StateMachine.JUMP)
 	
 	if _jump_action and _Crouch:
@@ -23,10 +22,6 @@ func _idle() -> void: # Estado Inerte
 	
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
-
-
-	
-		
 
 func _walk() -> void:
 	if _state != _StateMachine.JUMP:
@@ -62,18 +57,23 @@ func _jump() -> void:
 
 func _slime_transform() -> void:
 	_enterState("slime_transform")
+	_stop_movement()
 	
 	if slime == false:
-		transforming = true
 		_animated_sprite.play("slime_transform")
 		collision_morph.play("player-to-slime")
+		await get_tree().create_timer(1.0).timeout
+		_change_state(_StateMachine.SLIME_IDLE)
 	else:
-		transforming = false
 		_animated_sprite.play_backwards("slime_transform")
 		collision_morph.play_backwards("player-to-slime")
-
+		await get_tree().create_timer(1.0).timeout
+		_change_state(_StateMachine.IDLE)
+		
 func _slime_idle() -> void:
 	_enterState("slime_idle")
+	#_stop_movement()
+	
 	if _Input:
 		_change_state(_StateMachine.SLIME_WALK)
 	
@@ -81,26 +81,18 @@ func _slime_idle() -> void:
 		_change_state(_StateMachine.SLIME_TRANSFORM)
 
 func _slime_walk() -> void:
-	_slime_movement()
+	slime_movement()
+	
 	if _Input:
 		_enterState("slime_walk")
-		
 	else:
 		_change_state(_StateMachine.SLIME_IDLE)
-	
-func _on_anim_animation_finished() -> void:
-	if _state == _StateMachine.SLIME_TRANSFORM and transforming:
-		_change_state(_StateMachine.SLIME_IDLE)
-		slime = true
-	elif _state == _StateMachine.SLIME_TRANSFORM and !transforming:
-		_change_state(_StateMachine.IDLE)
-		slime = false
 
 func player_movement():
+	
 	if GeneralVars.gameExit:
 		_stop_movement()
 		
-	
 	var dir = (_ReverseInput * _Input) * -1
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
@@ -125,7 +117,7 @@ func player_movement():
 		else:
 			anim.speed_scale = 0.5
 
-func _slime_movement() -> void:
+func slime_movement() -> void:
 	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
 	
 	# Flipa o personagem dependendo da direção que _Input recebe
