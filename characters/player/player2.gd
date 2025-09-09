@@ -56,23 +56,27 @@ func _jump() -> void:
 		redVel = true
 
 func _slime_transform() -> void:
-	_enterState("slime_transform")
 	_stop_movement()
 	
 	if slime == false:
 		_animated_sprite.play("slime_transform")
 		collision_morph.play("player-to-slime")
-		await get_tree().create_timer(1.0).timeout
-		_change_state(_StateMachine.SLIME_IDLE)
 	else:
 		_animated_sprite.play_backwards("slime_transform")
 		collision_morph.play_backwards("player-to-slime")
-		await get_tree().create_timer(1.0).timeout
-		_change_state(_StateMachine.IDLE)
 		
+func _on_slime_animation_finished() -> void:
+	if !slime:
+		slime = true
+		_change_state(_StateMachine.SLIME_IDLE)
+		
+	else:
+		slime = false
+		_change_state(_StateMachine.IDLE)
+
 func _slime_idle() -> void:
 	_enterState("slime_idle")
-	#_stop_movement()
+	_stop_movement()
 	
 	if _Input:
 		_change_state(_StateMachine.SLIME_WALK)
@@ -93,7 +97,7 @@ func player_movement():
 	if GeneralVars.gameExit:
 		_stop_movement()
 		
-	var dir = (_ReverseInput * _Input) * -1
+	
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
 		if !slime:
@@ -109,13 +113,6 @@ func player_movement():
 			velocity.y *= 1.05
 			velocity.x *= 0.75
 			
-	if !_Run:
-		if dir > 0.8:
-			anim.speed_scale = dir
-		elif dir < 0.8 && dir >= 0.4:
-			anim.speed_scale = 0.75
-		else:
-			anim.speed_scale = 0.5
 
 func slime_movement() -> void:
 	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)

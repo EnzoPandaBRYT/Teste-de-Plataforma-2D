@@ -20,6 +20,8 @@ var _Input: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 var _ReverseInput: float: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.get_axis("move_left", "move_right") * -1
 
+var dir = (_ReverseInput * _Input) * -1
+
 var _Crouch: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.is_action_pressed("crouch")
 	
@@ -39,7 +41,10 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
 		_StateMachine.SLIME_WALK: _slime_walk()
-
+	
+	print(slime)
+	print(_state)
+	
 	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
@@ -80,6 +85,14 @@ func _movement() -> void:
 		_animated_sprite.flip_h = false
 	if _Input < 0:
 		_animated_sprite.flip_h = true
+		
+	if !_Run:
+		if dir > 0.8:
+			_animated_sprite.speed_scale = dir
+		elif dir < 0.8 && dir >= 0.4:
+			_animated_sprite.speed_scale = 0.75
+		else:
+			_animated_sprite.speed_scale = 0.5
 
 func _slime_movement() -> void:
 	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
