@@ -1,5 +1,7 @@
 extends Node
 
+var fullscreen_toggle = false
+
 #Sliders
 @onready var masterSlider = $MasterVolume/HBoxContainer/masterSlider
 @onready var sfxSlider = $SFXVolume/HBoxContainer/sfxSlider
@@ -18,11 +20,17 @@ func _ready():
 	sfxSlider.value = min(audio_settings["sfxVolume"], 1.0) * 100
 	
 	if GameConfig.config.get_value("video", "fullscreen"):
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		fullscreenButton.button_pressed = true
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		fullscreenButton.button_pressed = false
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fullscreen_toggle") and !fullscreen_toggle:
+		fullscreenButton.button_pressed = true
+		fullscreen_toggle = true
+	elif Input.is_action_just_pressed("fullscreen_toggle") and fullscreen_toggle:
+		fullscreenButton.button_pressed = false
+		fullscreen_toggle = false
 func _on_button_focus_entered() -> void:
 	if GeneralVars._ControllersConnected > 0:
 		AudioPlayer.play_FX(sfxSelectNormal, -9.0)
