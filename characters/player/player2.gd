@@ -1,9 +1,11 @@
 extends Character
 
 @onready var anim = $anim
+@onready var collision = $colission
 @onready var collision_morph = $collision_morph
 
 var stomp_charge := 0.0
+
 
 func _idle() -> void: # Estado Inerte
 	_enterState("idle") # Nome da Animação que será tocada
@@ -97,7 +99,6 @@ func player_movement():
 	if GeneralVars.gameExit:
 		_stop_movement()
 		
-	
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
 		if !slime:
@@ -119,6 +120,6 @@ func slime_movement() -> void:
 	
 	# Flipa o personagem dependendo da direção que _Input recebe
 	if _Input > 0:
-		_animated_sprite.flip_h = false
+		anim.flip_h = false
 	if _Input < 0:
-		_animated_sprite.flip_h = true
+		anim.flip_h = true

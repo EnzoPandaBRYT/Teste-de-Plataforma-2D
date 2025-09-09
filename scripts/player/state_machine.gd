@@ -94,15 +94,6 @@ func _movement() -> void:
 		else:
 			_animated_sprite.speed_scale = 0.5
 
-func _slime_movement() -> void:
-	velocity.x = _Input * (_speed/1.5) # Coloca a velocidade do eixo X como o Input recebido (Fórmula na variável)
-	
-	# Flipa o personagem dependendo da direção que _Input recebe
-	if _Input > 0:
-		_animated_sprite.flip_h = false
-	if _Input < 0:
-		_animated_sprite.flip_h = true
-
 func _stop_movement() -> void:
 	velocity.x = 0
 
