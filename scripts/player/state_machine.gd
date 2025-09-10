@@ -42,8 +42,6 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_IDLE: _slime_idle()
 		_StateMachine.SLIME_WALK: _slime_walk()
 	
-	print(slime)
-	print(_state)
 	
 	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"

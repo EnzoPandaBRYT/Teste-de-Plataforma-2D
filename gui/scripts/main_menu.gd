@@ -28,6 +28,8 @@ func _on_start_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	$section.play("change_options")
+	if GeneralVars._ControllersConnected > 0:
+		$Options/Panel2/VBoxContainer/back.grab_focus()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit(910)
@@ -42,3 +44,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$MainMenu/canvas/black.visible = false
 		if Input.get_connected_joypads().size() > 0:
 			$"MainMenu/Panel2/container/start".grab_focus()
+			

@@ -420,11 +420,13 @@ metadata/_edit_use_anchors_ = true
 [node name="back" type="Button" parent="Options/Panel2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+focus_neighbor_top = NodePath("../../../Resolution/HBoxContainer/CheckBox")
+focus_neighbor_bottom = NodePath("../../../MasterVolume/HBoxContainer/masterSlider")
 theme_override_styles/focus = ExtResource("10_xax1p")
 theme_override_styles/normal = ExtResource("5_7jyi1")
 text = "Voltar"
 
-[node name="MasterVolume2" type="Panel" parent="Options"]
+[node name="Resolution" type="Panel" parent="Options"]
 anchors_preset = -1
 anchor_left = 0.208333
 anchor_top = 0.222222
@@ -440,7 +442,7 @@ size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_xax1p")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/MasterVolume2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Resolution"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.285198
@@ -451,13 +453,15 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Options/MasterVolume2/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/Resolution/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Tela Cheia:"
 
-[node name="CheckBox" type="CheckBox" parent="Options/MasterVolume2/HBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="Options/Resolution/HBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
+focus_neighbor_bottom = NodePath("../../../Panel2/VBoxContainer/back")
 theme_override_styles/focus = ExtResource("10_xax1p")
 
 [node name="MasterVolume" type="Panel" parent="Options"]
@@ -492,6 +496,8 @@ text = "Volume:"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../Panel2/VBoxContainer/back")
+focus_neighbor_bottom = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
 
 [node name="SFXVolume" type="Panel" parent="Options"]
 anchors_preset = -1
@@ -528,6 +534,8 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../MasterVolume/HBoxContainer/masterSlider")
+focus_neighbor_bottom = NodePath("../../../Resolution/HBoxContainer/CheckBox")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_noene")
 value = 100.0
 scrollable = false
@@ -568,7 +576,7 @@ libraries = {
 [connection signal="pressed" from="MainMenu/Panel2/container/exit" to="." method="_on_exit_pressed"]
 [connection signal="animation_finished" from="MainMenu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Options/Panel2/VBoxContainer/back" to="Options" method="_on_back_pressed"]
-[connection signal="toggled" from="Options/MasterVolume2/HBoxContainer/CheckBox" to="Options" method="_on_check_box_toggled"]
+[connection signal="toggled" from="Options/Resolution/HBoxContainer/CheckBox" to="Options" method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_drag_ended"]
 [connection signal="value_changed" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_value_changed"]
 [connection signal="drag_ended" from="Options/SFXVolume/HBoxContainer/sfxSlider" to="Options" method="_on_sfx_slider_drag_ended"]

@@ -9,6 +9,9 @@ var _ControllerInput: float:
 var gameExit = false
 var fullscreen_toggle = false
 
+func _ready() -> void:
+	#print(_ControllerInput)
+	pass
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fullscreen_toggle") and !fullscreen_toggle:

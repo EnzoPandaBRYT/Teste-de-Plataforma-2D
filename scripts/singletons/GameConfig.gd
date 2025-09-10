@@ -28,8 +28,6 @@ func _ready() -> void:
 		# SFX Volume
 		sfxVolumeValue = config.get_value("audio", "sfxVolume")
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfxVolumeValue))
-		print(masterVolumeValue)
-		print(sfxVolumeValue)
 
 func save_audio_settings(key: String, value):
 	config.set_value("audio", key, value)
