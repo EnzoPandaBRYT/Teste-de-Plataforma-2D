@@ -6,6 +6,8 @@ extends Character
 
 var stomp_charge := 0.0
 
+func _ready() -> void:
+	$collision_morph.play("RESET")
 
 func _idle() -> void: # Estado Inerte
 	_enterState("idle") # Nome da Animação que será tocada
@@ -29,9 +31,9 @@ func _walk() -> void:
 	if _state != _StateMachine.JUMP:
 		_movement() # Movimentação do Personagem
 		if _Run:
-			$anim.speed_scale = 2.0
+			anim.speed_scale = 1.5
 		else:
-			$anim.speed_scale = 1.0
+			anim.speed_scale = 1.0
 	if _jump_action and !_Crouch or !is_on_floor():
 		_change_state(_StateMachine.JUMP)
 	elif _Input:
@@ -58,7 +60,7 @@ func _jump() -> void:
 		redVel = true
 
 func _slime_transform() -> void:
-	_stop_movement()
+	transforming = true
 	
 	if slime == false:
 		_animated_sprite.play("slime_transform")
@@ -70,10 +72,12 @@ func _slime_transform() -> void:
 func _on_slime_animation_finished() -> void:
 	if !slime:
 		slime = true
+		transforming = false
 		_change_state(_StateMachine.SLIME_IDLE)
 		
 	else:
 		slime = false
+		transforming = false
 		_change_state(_StateMachine.IDLE)
 
 func _slime_idle() -> void:
@@ -96,15 +100,16 @@ func _slime_walk() -> void:
 
 func player_movement():
 	
-	if GeneralVars.gameExit:
+	if GeneralVars.gameExit or GeneralVars.in_cutscene:
 		_stop_movement()
+		_state = _StateMachine.IDLE
 		
 	# Pulo
-	if Input.is_action_just_pressed("jump") and !_Crouch and is_on_floor():
+	if Input.is_action_just_pressed("jump") and !_Crouch and !transforming and !GeneralVars.in_cutscene and is_on_floor():
 		if !slime:
 			velocity.y = _jump_speed
 		else:
-			velocity.y = _jump_speed * 1.20
+			velocity.y = _jump_speed * 1.30
 
 	if Input.is_action_just_released("jump") and redVel:
 		if !slime:

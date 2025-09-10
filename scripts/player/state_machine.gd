@@ -5,12 +5,13 @@ class_name Character extends CharacterBody2D
 
 enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK } # Determina todos os Estados possíveis
 
-var _state : _StateMachine = _StateMachine.IDLE # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
+var _state : _StateMachine # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
 
 var locked = false
-var slime := false
 var redVel := true
+var slime := false
+var transforming := false
 
 @onready var _animated_sprite = $anim
 
@@ -72,7 +73,8 @@ func _slime_idle() -> void: pass
 func _slime_walk() -> void: pass
 
 func _movement() -> void:
-	
+	if GeneralVars.in_cutscene:
+		return
 	if Input.is_action_pressed("run"):
 		velocity.x = _Input * _speed * 1.5
 	else:
@@ -94,6 +96,10 @@ func _movement() -> void:
 
 func _stop_movement() -> void:
 	velocity.x = 0
+
+func _slime_stop_movement() -> void:
+	velocity.x = 0
+	velocity.y = 0
 
 func _set_Gravity(delta: float) -> void:
 	if !is_on_floor():

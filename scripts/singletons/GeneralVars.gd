@@ -8,6 +8,7 @@ var _ControllerInput: float:
 
 var gameExit = false
 var fullscreen_toggle = false
+var in_cutscene = false
 
 func _ready() -> void:
 	#print(_ControllerInput)

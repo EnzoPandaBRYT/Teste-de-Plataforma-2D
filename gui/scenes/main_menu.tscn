@@ -251,15 +251,15 @@ anchor_mode = 0
 
 [node name="MainMenu" type="Node" parent="."]
 
+[node name="Backgroud" type="Sprite2D" parent="MainMenu"]
+position = Vector2(240, 135)
+texture = ExtResource("4_71m5h")
+
 [node name="optic-cog" type="Sprite2D" parent="MainMenu"]
 position = Vector2(432, 44)
 scale = Vector2(0.539063, 0.539063)
 texture = ExtResource("11_vu40p")
 script = ExtResource("12_aefp4")
-
-[node name="Backgroud" type="Sprite2D" parent="MainMenu"]
-position = Vector2(240, 135)
-texture = ExtResource("4_71m5h")
 
 [node name="background" type="Panel" parent="MainMenu"]
 anchors_preset = 15
