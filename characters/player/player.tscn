@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=69 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dk5takl1uvkqv" path="res://assets/characters/player/glitchy'/Slime - Walk.png" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://r0a64xe555sf" path="res://assets/characters/player/glitchy'/Jump.png" id="6_idpv6"]
 [ext_resource type="Texture2D" uid="uid://c52k73sosnuqk" path="res://assets/characters/player/glitchy'/Idle - Soul.png" id="6_rpf03"]
+[ext_resource type="Texture2D" uid="uid://cx5wvywnx5a54" path="res://assets/characters/player/glitchy'/Slime - Jump -  Act.png" id="6_x5dtk"]
+[ext_resource type="Texture2D" uid="uid://c7qq5in6n2lkt" path="res://assets/characters/player/glitchy'/Slime - Jump -  Mid.png" id="7_3t07l"]
 [ext_resource type="Texture2D" uid="uid://birmau8c62h3h" path="res://assets/characters/player/glitchy'/Walk 2.png" id="8_idpv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpf03"]
@@ -72,6 +74,46 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1mdy"]
 atlas = ExtResource("5_rpf03")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hjhg"]
+atlas = ExtResource("6_x5dtk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvmlt"]
+atlas = ExtResource("6_x5dtk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d2wq"]
+atlas = ExtResource("6_x5dtk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr20l"]
+atlas = ExtResource("6_x5dtk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdpt7"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di0ei"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqh1"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0ap2"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7owf2"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7nuc"]
+atlas = ExtResource("7_3t07l")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dirf7"]
 atlas = ExtResource("5_c6leb")
@@ -250,6 +292,46 @@ animations = [{
 "loop": true,
 "name": &"slime_idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hjhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvmlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d2wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr20l")
+}],
+"loop": true,
+"name": &"slime_jump_act_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdpt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di0ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apqh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0ap2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7owf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7nuc")
+}],
+"loop": true,
+"name": &"slime_jump_mid_idle",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -438,8 +520,8 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"slime_walk"
-frame_progress = 0.841609
+animation = &"slime_jump_mid_idle"
+frame_progress = 0.900555
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14

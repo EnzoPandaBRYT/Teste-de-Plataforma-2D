@@ -83,13 +83,23 @@ func _on_slime_animation_finished() -> void:
 func _slime_idle() -> void:
 	_enterState("slime_idle")
 	_stop_movement()
+	if _jump_action:
+		_change_state(_StateMachine.SLIME_JUMP_IDLE)
 	
-	if _Input:
+	elif _Input:
 		_change_state(_StateMachine.SLIME_WALK)
 	
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
 
+func _slime_jump_idle() -> void:
+	slime_movement()
+	
+	if _Input:
+		_enterState("slime_walk")
+	else:
+		_change_state(_StateMachine.SLIME_IDLE)
+		
 func _slime_walk() -> void:
 	slime_movement()
 	
