@@ -7,6 +7,7 @@ extends Sprite2D
 var time: float = 0.0
 var base_position: Vector2
 
+
 func _ready() -> void:
 	# guarda a posição inicial (já com o offset aplicado)
 	base_position = position + offset

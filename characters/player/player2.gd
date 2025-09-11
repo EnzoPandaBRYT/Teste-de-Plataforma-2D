@@ -34,6 +34,7 @@ func _walk() -> void:
 			anim.speed_scale = 1.5
 		else:
 			anim.speed_scale = 1.0
+	
 	if _jump_action and !_Crouch or !is_on_floor():
 		_change_state(_StateMachine.JUMP)
 	elif _Input:
@@ -48,16 +49,18 @@ func _walk() -> void:
 
 func _jump() -> void:
 	_enterState("jumping")
-		
-	if _Input and redVel:
-		_movement()
 	
-	if _jump_action:
-		_animated_sprite.play("jumping")
+	
+	
+	if _jump_action or _jump_action and _Input:
+		anim.play("jumping")
 	
 	elif is_on_floor() and !_jump_action:
 		_change_state(_StateMachine.IDLE)
 		redVel = true
+	
+	elif _Input and redVel:
+		_movement()
 
 func _slime_transform() -> void:
 	transforming = true
@@ -70,21 +73,24 @@ func _slime_transform() -> void:
 		collision_morph.play_backwards("player-to-slime")
 		
 func _on_slime_animation_finished() -> void:
-	if !slime:
-		slime = true
-		transforming = false
-		_change_state(_StateMachine.SLIME_IDLE)
-		
-	else:
-		slime = false
-		transforming = false
-		_change_state(_StateMachine.IDLE)
+	if anim.animation == "slime_transform":
+		if !slime:
+			slime = true
+			transforming = false
+			_change_state(_StateMachine.SLIME_IDLE)
+			print("ERRO 1")
+		else:
+			print("ERRO 2")
+			slime = false
+			transforming = false
+			_change_state(_StateMachine.IDLE)
 
 func _slime_idle() -> void:
 	_enterState("slime_idle")
 	_stop_movement()
+	
 	if _jump_action:
-		_change_state(_StateMachine.SLIME_JUMP_IDLE)
+		_change_state(_StateMachine.SLIME_JUMP_ACT_IDLE)
 	
 	elif _Input:
 		_change_state(_StateMachine.SLIME_WALK)
@@ -92,18 +98,20 @@ func _slime_idle() -> void:
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
 
-func _slime_jump_idle() -> void:
+func _slime_jump_act_idle() -> void:
+	_enterState("slime_jump_act_idle")
 	slime_movement()
 	
-	if _Input:
-		_enterState("slime_walk")
+	if !is_on_floor():
+		anim.play("slime_jump_mid_idle")
 	else:
+		anim.play_backwards("slime_jump_act_idle")
 		_change_state(_StateMachine.SLIME_IDLE)
-		
+	
 func _slime_walk() -> void:
 	slime_movement()
 	
-	if _Input:
+	if _Input and !is_on_wall():
 		_enterState("slime_walk")
 	else:
 		_change_state(_StateMachine.SLIME_IDLE)

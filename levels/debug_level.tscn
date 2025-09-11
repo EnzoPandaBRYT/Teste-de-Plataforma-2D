@@ -82,6 +82,31 @@ physics_layer_1/collision_layer = 16
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_spoyw")
 
+[sub_resource type="Animation" id="Animation_f3rnd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/Camera2D:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_kyyvy"]
 resource_name = "fade_in"
 length = 1.5
@@ -200,31 +225,6 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1.5)
 }
 
-[sub_resource type="Animation" id="Animation_f3rnd"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("player/Camera2D:zoom:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("player/Camera2D:zoom:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwkfn"]
 _data = {
 &"RESET": SubResource("Animation_f3rnd"),
@@ -271,7 +271,7 @@ position = Vector2(-163, -3)
 scale = Vector2(2, 2)
 
 [node name="anim" parent="player" index="0"]
-animation = &"idle"
+animation = &"slime_walk"
 frame_progress = 0.0
 
 [node name="Camera2D" parent="player" index="2"]

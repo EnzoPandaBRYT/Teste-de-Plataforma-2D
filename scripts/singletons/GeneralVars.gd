@@ -6,13 +6,19 @@ var _ControllersConnected: float:
 var _ControllerInput: float:
 	get: return Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
 
+# Game
 var gameExit = false
 var fullscreen_toggle = false
+
+# Player
 var in_cutscene = false
+var can_move = true
+var slime = false
 
 func _ready() -> void:
 	#print(_ControllerInput)
 	pass
+	
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fullscreen_toggle") and !fullscreen_toggle:
