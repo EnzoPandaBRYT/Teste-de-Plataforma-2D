@@ -269,6 +269,8 @@ metadata/_edit_use_anchors_ = true
 [node name="player" parent="." instance=ExtResource("1_rggqk")]
 position = Vector2(-163, -3)
 scale = Vector2(2, 2)
+_speed = 100.0
+_jump_speed = -350.0
 
 [node name="anim" parent="player" index="0"]
 animation = &"slime_walk"

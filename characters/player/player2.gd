@@ -90,30 +90,36 @@ func _slime_idle() -> void:
 	_stop_movement()
 	
 	if _jump_action:
-		_change_state(_StateMachine.SLIME_JUMP_ACT_IDLE)
+		_change_state(_StateMachine.SLIME_JUMP)
 	
 	elif _Input:
 		_change_state(_StateMachine.SLIME_WALK)
 	
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
-
-func _slime_jump_act_idle() -> void:
-	_enterState("slime_jump_act_idle")
-	slime_movement()
-	
-	if !is_on_floor():
-		anim.play("slime_jump_mid_idle")
-	else:
-		anim.play_backwards("slime_jump_act_idle")
-		_change_state(_StateMachine.SLIME_IDLE)
 	
 func _slime_walk() -> void:
 	slime_movement()
 	
-	if _Input and !is_on_wall():
+	if _jump_action:
+		_change_state(_StateMachine.SLIME_JUMP)
+	
+	elif _Input and !is_on_wall():
 		_enterState("slime_walk")
+	
 	else:
+		_change_state(_StateMachine.SLIME_IDLE)
+		
+func _slime_jump() -> void:
+	_enterState("slime_jump_act_idle")
+	slime_movement()
+	
+	if !is_on_floor() and !_Input:
+		anim.play("slime_jump_mid_idle")
+	elif !is_on_floor() and _Input:
+		anim.play("slime_jump_mid_mov")
+	else:
+		anim.play_backwards("slime_jump_act_idle")
 		_change_state(_StateMachine.SLIME_IDLE)
 
 func player_movement():

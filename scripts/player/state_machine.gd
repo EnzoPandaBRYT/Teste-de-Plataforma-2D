@@ -3,7 +3,7 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK, SLIME_JUMP_ACT_IDLE, SLIME_JUMP_MID_IDLE } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK, SLIME_JUMP } # Determina todos os Estados possíveis
 
 var _state : _StateMachine # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
@@ -42,8 +42,7 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
 		_StateMachine.SLIME_WALK: _slime_walk()
-		_StateMachine.SLIME_JUMP_ACT_IDLE: _slime_jump_act_idle()
-		_StateMachine.SLIME_JUMP_MID_IDLE: _slime_jump_mid_idle()
+		_StateMachine.SLIME_JUMP: _slime_jump()
 	
 	
 	_reset_scene()
@@ -73,8 +72,7 @@ func _jump() -> void: pass
 func _slime_transform() -> void: pass
 func _slime_idle() -> void: pass
 func _slime_walk() -> void: pass
-func _slime_jump_act_idle() -> void: pass
-func _slime_jump_mid_idle() -> void: pass
+func _slime_jump() -> void: pass
 
 func _movement() -> void:
 	if GeneralVars.in_cutscene:
