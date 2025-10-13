@@ -7,6 +7,7 @@ func _ready() -> void:
 	visible = false
 
 func resume():
+	AudioPlayer.music_normal()
 	$AnimationPlayer.play_backwards("blur")
 	get_tree().paused = false
 	await get_tree().create_timer(0.3).timeout
@@ -18,7 +19,6 @@ func pause():
 	$background/VBoxContainer/back.grab_focus()
 	get_tree().paused = true
 	
-	
 func getEsc():
 	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
 		pause()
@@ -27,6 +27,8 @@ func getEsc():
 		
 func _process(_delta: float) -> void:
 	getEsc()
+	if get_tree().paused:
+		AudioPlayer.music_reduce()
 
 func _on_back_pressed() -> void:
 	resume()
@@ -39,6 +41,7 @@ func _on_exit_pressed() -> void:
 	resume()
 	GeneralVars.gameExit = true
 	$"../../AnimationPlayer".play("fade_out")
+	AudioPlayer.fade_to_music(1.8)
 	await get_tree().create_timer(1.8).timeout
 	get_tree().change_scene_to_file("res://gui/scenes/main_menu.tscn")
 
