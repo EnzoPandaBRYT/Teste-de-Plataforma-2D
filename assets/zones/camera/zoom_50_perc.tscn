@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bavd3hshyhmnc"]
+
+[ext_resource type="Script" uid="uid://bg3p5u7pvxl6h" path="res://scripts/zones/camera/zoom_50_perc.gd" id="1_fkhny"]
+
+[node name="zoom_50_perc" type="Area2D"]
+script = ExtResource("1_fkhny")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

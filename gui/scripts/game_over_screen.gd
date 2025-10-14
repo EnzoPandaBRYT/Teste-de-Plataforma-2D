@@ -36,7 +36,7 @@ func _on_restart_pressed() -> void:
 func _on_exit_pressed() -> void:
 	resume()
 	GeneralVars.gameExit = true
-	$"../../AnimationPlayer".play("fade_out")
+	$"../../AnimationPlayer".play("game_over_exit")
 	AudioPlayer.fade_to_music(1.8)
 	await get_tree().create_timer(1.8).timeout
 	get_tree().change_scene_to_file("res://gui/scenes/main_menu.tscn")
