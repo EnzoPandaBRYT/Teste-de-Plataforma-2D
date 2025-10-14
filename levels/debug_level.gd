@@ -4,6 +4,7 @@ extends Node2D
 @onready var load = $"CanvasLayer2/black-load"
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	AudioPlayer.play_music_level1()
 	$AnimationPlayer.play("fade_in")
 

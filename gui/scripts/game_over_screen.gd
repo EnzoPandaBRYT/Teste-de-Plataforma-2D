@@ -1,6 +1,7 @@
 extends Control
 
 @onready var sfxSelectNormal = preload("res://sounds/sfx/Select.mp3")
+@onready var player = $"../../player"
 
 func _ready() -> void:
 	modulate = Color(1, 1, 1, 0)
@@ -14,26 +15,19 @@ func resume():
 	await get_tree().create_timer(0.3).timeout
 	$".".visible = false
 	
-func pause():
+func game_over():
 	$".".visible = true
 	$AnimationPlayer.play("blur")
-	$background/VBoxContainer/back.grab_focus()
+	$background/VBoxContainer/exit.grab_focus()
 	get_tree().paused = true
-	
-func getEsc():
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
-		pause()
-	elif Input.is_action_just_pressed("pause_game") and get_tree().paused:
-		resume()
 		
 func _process(_delta: float) -> void:
-	getEsc()
+	if GeneralVars.gameOver == true:
+		game_over()
+		GeneralVars.gameOver = false
 	if get_tree().paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		AudioPlayer.music_reduce()
-
-func _on_back_pressed() -> void:
-	resume()
 
 func _on_restart_pressed() -> void:
 	resume()

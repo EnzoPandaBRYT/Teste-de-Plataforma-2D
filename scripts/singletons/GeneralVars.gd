@@ -14,6 +14,7 @@ var fullscreen_toggle = false
 var in_cutscene = false
 var can_move = true
 var slime = false
+var gameOver = false
 
 func _ready() -> void:
 	#print(_ControllerInput)

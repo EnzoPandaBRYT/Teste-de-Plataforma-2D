@@ -4,6 +4,7 @@ const intro = preload("res://sounds/cutscenes/Intro Sound.mp3")
 @onready var animation = $animation
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	animation.play("RESET")
 	await get_tree().create_timer(0.25).timeout
 	animation.play("intro")

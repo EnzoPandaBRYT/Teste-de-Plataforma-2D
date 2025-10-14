@@ -39,8 +39,7 @@ func play_FX(stream: AudioStream, volume = 0.0):
 func fade_to_music(fade_time := 1.0):
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", -80, fade_time) # fade out
-	
-	
+
 func music_reduce(new_volume := -18.0, fade_time := 0.5, pitch = 0.75):
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", new_volume, fade_time) # fade out

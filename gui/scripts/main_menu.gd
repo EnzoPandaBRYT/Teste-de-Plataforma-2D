@@ -6,6 +6,7 @@ extends Control
 var animation_finished = false
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GeneralVars.gameExit = false
 	AudioPlayer.play_music_menu()
 	_anim()
