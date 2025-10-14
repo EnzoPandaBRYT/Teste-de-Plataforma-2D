@@ -358,6 +358,9 @@ frame_progress = 0.0
 [node name="Camera2D" parent="player" index="2"]
 zoom = Vector2(1.5, 1.5)
 
+[node name="Camera_Area" type="Camera2D" parent="."]
+position = Vector2(497, -102)
+
 [node name="ground" type="Node" parent="."]
 
 [node name="ground" type="TileMapLayer" parent="ground"]
@@ -387,7 +390,7 @@ shape = SubResource("RectangleShape2D_1ub6n")
 [node name="zoom_50_perc" parent="." instance=ExtResource("14_6ckx4")]
 
 [node name="area_1_initial" type="CollisionShape2D" parent="zoom_50_perc"]
-position = Vector2(508.625, -121)
+position = Vector2(-43, -93)
 shape = SubResource("RectangleShape2D_6ckx4")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
