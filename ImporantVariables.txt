@@ -1,0 +1,8 @@
+Como uma boa prática de programação, resolvi implementar variáveis globais, que evitam e evitarão problemas como:
+	- Variáveis que não podem ser acessadas por N motivos dentro de um bloco de código;
+	- Variáveis que não podem ser utilizadas da melhor maneira por serem instanciadas em um script em loop;
+
+- A variável "GeneralVars.in_cutscene" é a mais importante por ora. Ela é responsável por fazer o jogador ficar imóvel
+quando se tem uma animação rolando, seja proviniente de um AnimationPlayer próprio da cena, ou de outras entitades.
+- Outra variável, "GeneralVars.can_move" faz algo parecido, porém ela serve apenas para deixar o jogador imóvel
+(sem receber nenhum Input) mesmo.

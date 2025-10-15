@@ -1,24 +1,22 @@
-v0.1.9a:
+v0.2.0:
 
-- SLIME ADICIONADO!:
-	- Agora, um slime está disponível (sem animação)! Pressione 'F' para se transformar!
+Adicionado:
+	+ Tela de Game Over (100% Funcional)
+	+ Cutscenes (W.I.P.)
+	+ Killzones
+	+ Areas de teste para Cutscenes
+	+ Tecla para forçar Game Over "["
+	+ Transição especial para o Game Over
+	+ Transição para Slime melhorada
+	+ Fundo do primeiro nível adicionado!
+	+ Música do primeiro nível alterada!
+	+ Testes com variáveis globais sendo executados...
+	+ Inimigos virão futuramente!
+	
+Nada foi removido nessa atualização.
 
-- ANIMAÇÕES MODIFICADAS!:
-	- As animações de andar foram modificadas! (De corrida virão logo!)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Variáveis importantes:
+	+ Um arquivo contendo as variáveis mais importantes foi adicionado.a
 
 
 
@@ -35,4 +33,18 @@ v0.1.9a:
 
 
 
-^o.o^ = Neguinha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^o>o^ = Bob

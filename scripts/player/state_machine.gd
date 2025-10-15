@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_WALK: _slime_walk()
 		_StateMachine.SLIME_JUMP: _slime_jump()
 	
-	
+	_game_over()
 	_reset_scene()
 	_set_Gravity(delta) # Gravidade que usa o parâmetro "delta"
 	player_movement() # Movimentação do personagem
@@ -114,3 +114,9 @@ func _set_Gravity(delta: float) -> void:
 func _reset_scene() -> void:
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+
+func _game_over() -> void:
+	if Input.is_action_just_pressed("game_over"):
+		GeneralVars.gameOver = true
+		print(GeneralVars.gameOver)
+		get_tree().paused = true
