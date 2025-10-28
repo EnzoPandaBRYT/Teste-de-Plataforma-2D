@@ -1,6 +1,7 @@
-[gd_scene load_steps=74 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=83 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://d4cfr81c67a81" path="res://assets/characters/player/glitchy'/Crouch - Transform.png" id="2_on558"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
 [ext_resource type="Texture2D" uid="uid://ci706ygkm6io2" path="res://assets/characters/player/glitchy'/Idle.png" id="5_idpv6"]
 [ext_resource type="Texture2D" uid="uid://cug0ogwydxrsw" path="res://assets/characters/player/glitchy'/Slime - Idle.png" id="5_rpf03"]
@@ -11,6 +12,34 @@
 [ext_resource type="Texture2D" uid="uid://cxx4d0wu0n40s" path="res://assets/characters/player/glitchy'/Slime - Jump -  Mid - Idle.png" id="7_3t07l"]
 [ext_resource type="Texture2D" uid="uid://bts52w0y116ni" path="res://assets/characters/player/glitchy'/Slime - Jump -  Mid - Mov.png" id="8_3t07l"]
 [ext_resource type="Texture2D" uid="uid://birmau8c62h3h" path="res://assets/characters/player/glitchy'/Walk 2.png" id="8_idpv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro1nf"]
+atlas = ExtResource("2_on558")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiq46"]
+atlas = ExtResource("2_on558")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pmip"]
+atlas = ExtResource("2_on558")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpvo7"]
+atlas = ExtResource("2_on558")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14epw"]
+atlas = ExtResource("2_on558")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arbsv"]
+atlas = ExtResource("2_on558")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3y00"]
+atlas = ExtResource("2_on558")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpf03"]
 atlas = ExtResource("5_idpv6")
@@ -242,6 +271,32 @@ region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oul6g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro1nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiq46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pmip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpvo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14epw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arbsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3y00")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 28.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rpf03")
@@ -503,6 +558,43 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_on558"]
+resource_name = "player-crouch"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("colission:shape:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("colission:shape:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(17.8, -0.25, 0, 0.25, 0, 15.25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("colission:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.18868, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
 [sub_resource type="Animation" id="Animation_dirf7"]
 resource_name = "player-to-slime"
 length = 0.5
@@ -543,6 +635,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rpf03"]
 _data = {
 &"RESET": SubResource("Animation_idpv6"),
+&"player-crouch": SubResource("Animation_on558"),
 &"player-to-slime": SubResource("Animation_dirf7")
 }
 
@@ -554,13 +647,18 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"slime_jump_mid_mov"
-frame_progress = 0.668861
+animation = &"crouch"
+frame = 6
+frame_progress = 1.0
 
 [node name="colission" type="CollisionShape2D" parent="."]
 visibility_layer = 14
 position = Vector2(-0.5, -1.18868)
 shape = SubResource("RectangleShape2D_idpv6")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(7, 0)
+collision_mask = 32
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -2)

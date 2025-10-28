@@ -15,6 +15,11 @@ var in_cutscene = false
 var can_move = true
 var slime = false
 var gameOver = false
+var hasCore = false
+
+# Velocidade
+var runAcc = 1.0
+var runMaxAcc = 1.6
 
 func _ready() -> void:
 	#print(_ControllerInput)

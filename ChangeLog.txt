@@ -1,22 +1,15 @@
-v0.2.0:
+v0.2.2:
 
 Adicionado:
-	+ Tela de Game Over (100% Funcional)
-	+ Cutscenes (W.I.P.)
-	+ Killzones
-	+ Areas de teste para Cutscenes
-	+ Tecla para forçar Game Over "["
-	+ Transição especial para o Game Over
-	+ Transição para Slime melhorada
-	+ Fundo do primeiro nível adicionado!
-	+ Música do primeiro nível alterada!
-	+ Testes com variáveis globais sendo executados...
-	+ Inimigos virão futuramente!
-	
-Nada foi removido nessa atualização.
+	+ Wall Jump: Agora é possível grudar em paredes específicas para realizar o "Wall Jump" pressionando [Espaço];
+	+ A velocidade de corrida foi balanceada;
+	+ Glitchy' (Forma Natural): Agora existe uma animação para "abaixar". Essa animação terá sua variação Nuclear.
 
-Variáveis importantes:
-	+ Um arquivo contendo as variáveis mais importantes foi adicionado.a
+Correções e melhorias:
+	- Foi corrigido um bug do sprite virar sozinho em alguns momentos;
+	+ O código foi re-feito em algumas partes para implementação do Wall Jump.
+
+*** Essa é uma versão beta do Wall Jump, ainda serão feitas otimizações no código futuramente! ***
 
 
 
@@ -42,9 +35,4 @@ Variáveis importantes:
 
 
 
-
-
-
-
-
-^o>o^ = Bob
+^`>´^ = Bolinha
