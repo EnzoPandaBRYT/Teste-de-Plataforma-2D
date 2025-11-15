@@ -60,8 +60,6 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_JUMP: _slime_jump()
 	if !_OnWall:
 		_jump_action = Input.is_action_just_pressed("jump")
-	if _Input:
-		print(is_on_floor())
 	
 	
 	

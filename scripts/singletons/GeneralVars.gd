@@ -17,6 +17,9 @@ var slime = false
 var gameOver = false
 var hasCore = false
 
+# Pontuação
+var player_score = 0
+
 # Velocidade
 var runAcc = 1.0
 var runMaxAcc = 1.6
