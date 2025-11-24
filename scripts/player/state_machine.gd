@@ -3,7 +3,7 @@ class_name Character extends CharacterBody2D
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
-enum _StateMachine { IDLE, WALK, RUN, JUMP, CROUCH, ON_WALL, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK, SLIME_JUMP } # Determina todos os Estados possíveis
+enum _StateMachine { IDLE, WALK, RUN, JUMP, CROUCH, ATTACK, ON_WALL, SLIME_TRANSFORM, SLIME_IDLE, SLIME_WALK, SLIME_JUMP } # Determina todos os Estados possíveis
 
 var _state : _StateMachine # Determina a variável como sendo do tipo "StateMachine (enum)" / O valor de _state determina qual função será executada no _physics_process
 var _enter_state := true # Variável 
@@ -43,16 +43,20 @@ var _Crouch: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
 var _Run: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
 	get: return Input.is_action_pressed("run")
 
+var _Attack: bool: # Sistema de Input (Exclusivo do(s) jogador(es)
+	get: return Input.is_action_just_pressed("attack")
+
 @warning_ignore("unused_private_class_variable")
 var _jump_action: bool
 
 func _physics_process(delta: float) -> void:
-	match _state: # State machine que, quando encontra o estado, executa uma função
+	match _state: # State machine que, de acordo com o Enum, executa uma função
 		_StateMachine.IDLE: _idle()
 		_StateMachine.WALK: _walk()
 		_StateMachine.RUN: _run()
 		_StateMachine.JUMP: _jump()
 		_StateMachine.CROUCH: _crouch()
+		_StateMachine.ATTACK: _attack()
 		_StateMachine.ON_WALL: _on_wall()
 		_StateMachine.SLIME_TRANSFORM: _slime_transform()
 		_StateMachine.SLIME_IDLE: _slime_idle()
@@ -60,8 +64,6 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_JUMP: _slime_jump()
 	if !_OnWall:
 		_jump_action = Input.is_action_just_pressed("jump")
-	
-	
 	
 	_game_over()
 	_reset_scene()
@@ -89,6 +91,7 @@ func _walk() -> void: pass
 func _run() -> void: pass
 func _jump() -> void: pass
 func _crouch() -> void: pass
+func _attack() -> void: pass
 func _on_wall() -> void: pass
 func _slime_transform() -> void: pass
 func _slime_idle() -> void: pass
@@ -139,8 +142,14 @@ func _set_Gravity(delta: float) -> void:
 			velocity += get_gravity() * delta # Gravidade
 		else:
 			velocity += get_gravity() * delta * 1.25
+
 func _reset_scene() -> void:
 	if Input.is_action_just_pressed("reset"):
+		GeneralVars.player_score = 0
+		GeneralVars.score_update = 0
+		GeneralVars.can_jump_cutscene = false
+		GeneralVars.pitch_score = 1.0
+		GeneralVars.currentTutorial = ""
 		get_tree().reload_current_scene()
 
 func _game_over() -> void:

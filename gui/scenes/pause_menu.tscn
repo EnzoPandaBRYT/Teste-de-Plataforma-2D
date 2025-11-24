@@ -130,6 +130,10 @@ text = "Voltar ao Jogo"
 layout_mode = 2
 text = "Reiniciar"
 
+[node name="options" type="Button" parent="background/VBoxContainer"]
+layout_mode = 2
+text = "Opções"
+
 [node name="exit" type="Button" parent="background/VBoxContainer"]
 layout_mode = 2
 text = "Sair"
@@ -145,6 +149,9 @@ libraries = {
 [connection signal="focus_entered" from="background/VBoxContainer/restart" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="background/VBoxContainer/restart" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="background/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="focus_entered" from="background/VBoxContainer/options" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="background/VBoxContainer/options" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="background/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="focus_entered" from="background/VBoxContainer/exit" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="background/VBoxContainer/exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="background/VBoxContainer/exit" to="." method="_on_exit_pressed"]

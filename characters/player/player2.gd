@@ -20,12 +20,18 @@ func _idle() -> void: # Estado Inerte
 		
 	if _jump_action and !slime:
 		_change_state(_StateMachine.JUMP)
-		
+	
+	if _Attack:
+		_change_state(_StateMachine.ATTACK)
 	
 	if Input.is_action_just_pressed("slime_transform"):
 		_change_state(_StateMachine.SLIME_TRANSFORM)
 
 func _walk() -> void:
+	
+	if _Attack:
+		_change_state(_StateMachine.ATTACK)
+	
 	if _state != _StateMachine.JUMP:
 		_movement() # Movimentação do Personagem
 		if _Run:
@@ -86,6 +92,10 @@ func _crouch() -> void:
 		else:
 			_enterState("crouch")
 
+func _attack() -> void:
+	_stop_movement()
+	anim.play("attack")
+
 func _on_wall() -> void:
 	_enterState("idle")
 	
@@ -102,6 +112,7 @@ func _on_wall() -> void:
 
 	
 	if Input.is_action_just_pressed("jump"):
+		AudioPlayer.sfx_wall_jump()
 		if facing == 0:
 			facing = 1 * lastDir
 		else:
@@ -127,16 +138,7 @@ func _slime_transform() -> void:
 		_animated_sprite.play_backwards("slime_transform")
 		collision_morph.play_backwards("player-to-slime")
 		
-func _on_slime_animation_finished() -> void:
-	if anim.animation == "slime_transform":
-		if !slime:
-			slime = true
-			transforming = false
-			_change_state(_StateMachine.SLIME_IDLE)
-		else:
-			slime = false
-			transforming = false
-			_change_state(_StateMachine.IDLE)
+	
 
 func _slime_idle() -> void:
 	_enterState("slime_idle")
@@ -190,6 +192,7 @@ func player_movement():
 
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and !transforming and !GeneralVars.in_cutscene and is_on_floor():
+		AudioPlayer.sfx_jump_normal()
 		if !slime:
 			velocity.y = _jump_speed
 		else:
@@ -239,3 +242,18 @@ func crouching() -> void:
 		anim.flip_h = false
 	if _Input < 0:
 		anim.flip_h = true
+
+
+func _on_animation_finished() -> void:
+	if anim.animation == "slime_transform":
+		if !slime:
+			slime = true
+			transforming = false
+			_change_state(_StateMachine.SLIME_IDLE)
+		else:
+			slime = false
+			transforming = false
+			_change_state(_StateMachine.IDLE)
+			
+	if anim.animation == "attack":
+		_change_state(_StateMachine.IDLE)

@@ -6,8 +6,10 @@ var fullscreen_toggle = false
 @onready var masterSlider = $MasterVolume/HBoxContainer/masterSlider
 @onready var sfxSlider = $SFXVolume/HBoxContainer/sfxSlider
 
-#Botões
+#Checkboxes
 @onready var fullscreenButton = $Resolution/HBoxContainer/CheckBox
+@onready var tutorialCheck = $Resolution/HBoxContainer2/CheckBox
+
 #SFX dos botões
 @onready var sfxSelectNormal = preload("res://sounds/sfx/Select.mp3")
 @onready var sfxChanged = preload("res://sounds/sfx/sfxSoundSlider.wav")
@@ -16,6 +18,8 @@ var fullscreen_toggle = false
 func _ready():
 	var audio_settings = GameConfig.load_audio_settings()
 	var video_settings = GameConfig.load_video_settings()
+	var misc_settings = GameConfig.load_misc_settings()
+	
 	masterSlider.value = min(audio_settings["masterVolume"], 1.0) * 100
 	sfxSlider.value = min(audio_settings["sfxVolume"], 1.0) * 100
 	
@@ -23,6 +27,11 @@ func _ready():
 		fullscreenButton.button_pressed = true
 	else:
 		fullscreenButton.button_pressed = false
+		
+	if GameConfig.config.get_value("misc", "allowTutorials"):
+		tutorialCheck.button_pressed = true
+	else:
+		tutorialCheck.button_pressed = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fullscreen_toggle") and !fullscreen_toggle:
@@ -61,3 +70,12 @@ func _on_check_box_toggled(toggled_on: bool) -> void:
 	else:
 		GameConfig.save_video_settings("fullscreen", toggled_on)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_tutorials_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		GameConfig.save_misc_settings("allowTutorials", toggled_on)
+		GameConfig.allowTutorials = toggled_on
+	else:
+		GameConfig.save_misc_settings("allowTutorials", toggled_on)
+		GameConfig.allowTutorials = toggled_on

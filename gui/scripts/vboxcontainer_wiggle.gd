@@ -3,7 +3,7 @@ extends VBoxContainer
 @export var amplitude: float = 5.0
 @export var rotation_strength: float = 1.5
 @export var speed: float = 1.1
-@export var offset: Vector2 = Vector2(0, 30) # empurra o grupo mais pra baixo ou pro lado
+@export var offset: Vector2 = Vector2(0, 0) # empurra o grupo mais pra baixo ou pro lado
 
 var time: float = 0.0
 var base_position: Vector2

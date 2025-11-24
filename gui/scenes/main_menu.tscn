@@ -1,12 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1ep3slxen4t7"]
+[gd_scene load_steps=30 format=3 uid="uid://b1ep3slxen4t7"]
 
 [ext_resource type="Script" uid="uid://qfmcruyyj3o3" path="res://gui/scripts/main_menu.gd" id="1_dovto"]
 [ext_resource type="Script" uid="uid://c6oxnsievle4c" path="res://gui/scripts/game_title.gd" id="2_b4e1n"]
 [ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/vboxcontainer_wiggle.gd" id="3_j7jgc"]
 [ext_resource type="Texture2D" uid="uid://cs3v4uofoj588" path="res://assets/images/backgroud.png" id="4_71m5h"]
 [ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="5_7jyi1"]
+[ext_resource type="Texture2D" uid="uid://dhixk1vn317y1" path="res://gui/assets/main-title_v2.png" id="5_voder"]
 [ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/blur.gdshader" id="6_q8cv4"]
 [ext_resource type="Script" uid="uid://byyy06r3x4qa7" path="res://gui/scripts/options_menu.gd" id="7_brwq4"]
+[ext_resource type="Texture2D" uid="uid://dxx07l4sftt4x" path="res://gui/assets/play-button.png" id="7_noene"]
 [ext_resource type="Script" uid="uid://dlslxyv1v6jwp" path="res://gui/scripts/background.gd" id="7_t6cje"]
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="8_brwq4"]
 [ext_resource type="Script" uid="uid://nsn3o5mu1dcr" path="res://gui/scripts/sfx_slider.gd" id="9_vu40p"]
@@ -14,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://c7kng6v428hyb" path="res://assets/characters/optic-cog/Idle.png" id="11_vu40p"]
 [ext_resource type="Script" uid="uid://c8s02luebjh4f" path="res://gui/scripts/sprite_wiggle.gd" id="12_aefp4"]
 [ext_resource type="Script" uid="uid://beqm5e0fhexnq" path="res://gui/scripts/sprite_wiggle_low.gd" id="13_rlxh0"]
-[ext_resource type="Texture2D" uid="uid://cdkg111gkepoo" path="res://gui/assets/Slider-Test.png" id="13_voder"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71m5h"]
 
@@ -24,8 +25,23 @@
 shader = ExtResource("6_q8cv4")
 shader_parameter/lod = 0.0
 
+[sub_resource type="Animation" id="Animation_voder"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu/title:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_xax1p"]
 resource_name = "fade_in"
+length = 1.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenu/gameTitle:modulate:a")
+tracks/1/path = NodePath("MainMenu/Panel2:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,24 +67,24 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu/Panel2:modulate:a")
+tracks/2/path = NodePath("MainMenu/canvas/blur:material:shader_parameter/lod")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.815, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu/canvas/blur:material:shader_parameter/lod")
+tracks/3/path = NodePath("MainMenu/title:self_modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.815, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.566667, 1.5)
 }
 
 [sub_resource type="Animation" id="Animation_7jyi1"]
@@ -186,6 +202,7 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jku36"]
 _data = {
+&"RESET": SubResource("Animation_voder"),
 &"fade_in": SubResource("Animation_xax1p"),
 &"fade_out": SubResource("Animation_7jyi1")
 }
@@ -196,11 +213,6 @@ font_size = 24
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rlxh0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xax1p"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noene"]
-texture = ExtResource("13_voder")
-texture_margin_right = 25.0
-axis_stretch_horizontal = 1
 
 [sub_resource type="Animation" id="Animation_brwq4"]
 length = 0.001
@@ -261,6 +273,20 @@ scale = Vector2(0.539063, 0.539063)
 texture = ExtResource("11_vu40p")
 script = ExtResource("12_aefp4")
 
+[node name="title" type="Sprite2D" parent="MainMenu"]
+position = Vector2(239.101, 38.5)
+scale = Vector2(0.384058, 0.384058)
+texture = ExtResource("5_voder")
+region_enabled = true
+region_rect = Rect2(0, 23, 640, 138)
+script = ExtResource("13_rlxh0")
+
+[node name="play-button" type="Sprite2D" parent="MainMenu"]
+position = Vector2(404, 93)
+scale = Vector2(0.347656, 0.347656)
+texture = ExtResource("7_noene")
+script = ExtResource("12_aefp4")
+
 [node name="background" type="Panel" parent="MainMenu"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,18 +296,21 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_71m5h")
 
 [node name="gameTitle" type="Label" parent="MainMenu"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.15
 anchor_right = 0.502
 anchor_bottom = 0.15
 offset_left = -76.0
-offset_top = -11.5
-offset_right = 77.04
-offset_bottom = 11.5
+offset_top = -24.5
+offset_right = 78.04
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Glitchy's Adventure"
+theme_override_font_sizes/font_size = 40
+text = "GLITCHY"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_b4e1n")
@@ -305,8 +334,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -112.5
-offset_bottom = 70.5
+offset_top = -82.5
+offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_j7jgc")
@@ -373,6 +402,7 @@ script = ExtResource("7_brwq4")
 position = Vector2(240, 135)
 texture = ExtResource("4_71m5h")
 offset = Vector2(480, 0)
+flip_h = true
 script = ExtResource("7_t6cje")
 
 [node name="options" type="Label" parent="Options"]
@@ -409,9 +439,9 @@ anchor_left = 0.420833
 anchor_top = 0.603604
 anchor_right = 0.579167
 anchor_bottom = 0.801802
-offset_left = 8.0
-offset_top = 16.0
-offset_right = -8.0
+offset_left = 0.000167847
+offset_top = -4.57764e-05
+offset_right = -0.000152588
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_j7jgc")
@@ -433,9 +463,9 @@ anchor_top = 0.222222
 anchor_right = 0.785417
 anchor_bottom = 0.37037
 offset_left = 481.0
-offset_top = 72.0001
+offset_top = 57.0001
 offset_right = 481.0
-offset_bottom = 72.0001
+offset_bottom = 57.0001
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -446,9 +476,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.285198
-anchor_top = 0.025
-anchor_right = 0.931408
-anchor_bottom = 1.025
+anchor_top = 0.1
+anchor_right = 0.931407
+anchor_bottom = 0.700001
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -464,6 +494,28 @@ focus_neighbor_top = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
 focus_neighbor_bottom = NodePath("../../../Panel2/VBoxContainer/back")
 theme_override_styles/focus = ExtResource("10_xax1p")
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/Resolution"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296028
+anchor_top = 0.825001
+anchor_right = 0.942237
+anchor_bottom = 1.425
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Options/Resolution/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tutoriais:"
+
+[node name="CheckBox" type="CheckBox" parent="Options/Resolution/HBoxContainer2"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
+focus_neighbor_bottom = NodePath("../../../Panel2/VBoxContainer/back")
+theme_override_styles/focus = ExtResource("10_xax1p")
+
 [node name="MasterVolume" type="Panel" parent="Options"]
 anchors_preset = -1
 anchor_left = 0.208333
@@ -471,7 +523,9 @@ anchor_top = 0.222222
 anchor_right = 0.785417
 anchor_bottom = 0.37037
 offset_left = 480.0
+offset_top = -12.0
 offset_right = 480.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -506,7 +560,9 @@ anchor_top = 0.37037
 anchor_right = 0.788542
 anchor_bottom = 0.518519
 offset_left = 480.0
+offset_top = -19.0
 offset_right = 480.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -536,7 +592,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../../../MasterVolume/HBoxContainer/masterSlider")
 focus_neighbor_bottom = NodePath("../../../Resolution/HBoxContainer/CheckBox")
-theme_override_styles/grabber_area = SubResource("StyleBoxTexture_noene")
 value = 100.0
 scrollable = false
 script = ExtResource("9_vu40p")
@@ -577,6 +632,7 @@ libraries = {
 [connection signal="animation_finished" from="MainMenu/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Options/Panel2/VBoxContainer/back" to="Options" method="_on_back_pressed"]
 [connection signal="toggled" from="Options/Resolution/HBoxContainer/CheckBox" to="Options" method="_on_check_box_toggled"]
+[connection signal="toggled" from="Options/Resolution/HBoxContainer2/CheckBox" to="Options" method="_on_tutorials_toggled"]
 [connection signal="drag_ended" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_drag_ended"]
 [connection signal="value_changed" from="Options/MasterVolume/HBoxContainer/masterSlider" to="Options" method="_on_master_slider_value_changed"]
 [connection signal="drag_ended" from="Options/SFXVolume/HBoxContainer/sfxSlider" to="Options" method="_on_sfx_slider_drag_ended"]

@@ -1,25 +1,23 @@
-v0.2.2:
+v0.2.3:
 
 Adicionado:
-	+ Wall Jump: Agora é possível grudar em paredes específicas para realizar o "Wall Jump" pressionando [Espaço];
-	+ A velocidade de corrida foi balanceada;
-	+ Glitchy' (Forma Natural): Agora existe uma animação para "abaixar". Essa animação terá sua variação Nuclear.
-
-Correções e melhorias:
-	- Foi corrigido um bug do sprite virar sozinho em alguns momentos;
-	+ O código foi re-feito em algumas partes para implementação do Wall Jump.
-
-*** Essa é uma versão beta do Wall Jump, ainda serão feitas otimizações no código futuramente! ***
-
-
-
-
-
-
-
-
-
-
+	- Sprite do Título do Jogo Adicionada!
+	- Moedas adicionadas!
+		- Cada moeda de ouro vale 100 pontos, que poderão ser utilizados em uma loja futura!;
+		- Ao pegar uma moeda, o valor de todas as outras aumenta em 10% o valor das outras moedas, 
+		com um máximo de 50%! Esse valor retorna a 0% após 3 segundos sem pegar nenhuma moeda!
+	- Base para tutorial e tutorial de pulo adicionados!
+	- Música do Menu alterada para Creatones - My Home.
+	- Ataque adicionado (não funcional): Pressione "F" ou aperte "X" no controle!
+	- Verificação de Inputs para tutoriais: Controles e Teclado!
+		- O jogo consegue verificar se o Input é do controle ou do teclado através da variável
+		"GeneralVars.usingController" que retorna true ou false;
+		- Essa adição permite que a imagem do botão a ser pressionado seja condizente com a ação a ser realizada.
+	
+	** INIMIGOS CHEGANDO, REPITO, INIMIGOS CHEGANDO! PREPARE-SE, GLITCHY'!
+Correções, melhorias e modificações:
+	- O botão de virar Slime foi alterado para o "R"! (Não foi alterado no controle!)
+	
 
 
 
@@ -35,4 +33,14 @@ Correções e melhorias:
 
 
 
-^`>´^ = Bolinha
+
+
+
+
+
+
+
+
+
+
+^-3-^ = Bob

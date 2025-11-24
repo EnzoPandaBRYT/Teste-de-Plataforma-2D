@@ -16,7 +16,7 @@ func resume():
 	$".".visible = false
 	
 func game_over():
-	$".".visible = true
+	visible = true
 	$AnimationPlayer.play("blur")
 	$background/VBoxContainer/exit.grab_focus()
 	get_tree().paused = true
@@ -31,6 +31,11 @@ func _process(_delta: float) -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
+	GeneralVars.player_score = 0
+	GeneralVars.score_update = 0
+	GeneralVars.can_jump_cutscene = false
+	GeneralVars.pitch_score = 1.0
+	GeneralVars.currentTutorial = ""
 	get_tree().reload_current_scene()
 	
 func _on_exit_pressed() -> void:

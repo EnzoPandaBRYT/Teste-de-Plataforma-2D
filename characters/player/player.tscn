@@ -1,6 +1,7 @@
-[gd_scene load_steps=83 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=86 format=3 uid="uid://d1vdky2eulpoe"]
 
 [ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://bohxvar2u8ki0" path="res://assets/characters/player/glitchy'/Attack v3.png" id="2_gqopd"]
 [ext_resource type="Texture2D" uid="uid://d4cfr81c67a81" path="res://assets/characters/player/glitchy'/Crouch - Transform.png" id="2_on558"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
 [ext_resource type="Texture2D" uid="uid://ci706ygkm6io2" path="res://assets/characters/player/glitchy'/Idle.png" id="5_idpv6"]
@@ -12,6 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://cxx4d0wu0n40s" path="res://assets/characters/player/glitchy'/Slime - Jump -  Mid - Idle.png" id="7_3t07l"]
 [ext_resource type="Texture2D" uid="uid://bts52w0y116ni" path="res://assets/characters/player/glitchy'/Slime - Jump -  Mid - Mov.png" id="8_3t07l"]
 [ext_resource type="Texture2D" uid="uid://birmau8c62h3h" path="res://assets/characters/player/glitchy'/Walk 2.png" id="8_idpv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw2xc"]
+atlas = ExtResource("2_gqopd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1db0"]
+atlas = ExtResource("2_gqopd")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro1nf"]
 atlas = ExtResource("2_on558")
@@ -271,6 +280,17 @@ region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oul6g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw2xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1db0")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ro1nf")
@@ -647,8 +667,8 @@ script = ExtResource("1_g1dw6")
 position = Vector2(-1, -8)
 scale = Vector2(0.496094, 0.492188)
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"crouch"
-frame = 6
+animation = &"attack"
+frame = 1
 frame_progress = 1.0
 
 [node name="colission" type="CollisionShape2D" parent="."]
@@ -672,4 +692,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_rpf03")
 }
 
-[connection signal="animation_finished" from="anim" to="." method="_on_slime_animation_finished"]
+[connection signal="animation_finished" from="anim" to="." method="_on_animation_finished"]

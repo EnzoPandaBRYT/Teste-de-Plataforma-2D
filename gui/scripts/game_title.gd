@@ -9,5 +9,5 @@ func _process(delta):
 	var y = cos(t * 2.0) * 10     # sobe e desce
 	var rot = sin(t * 2.0) * 5    # gira de -5° a +5°
 
-	position = Vector2(168, 29) + Vector2(x, y) # muda (200,200) pra posição base do label
+	position = Vector2(168, 10) + Vector2(x, y) # muda (200,200) pra posição base do label
 	rotation_degrees = rot

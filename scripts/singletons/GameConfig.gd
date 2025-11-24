@@ -2,6 +2,7 @@ extends Node
 
 var masterVolumeValue = 100
 var sfxVolumeValue = 100
+var allowTutorials: bool
 var config = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://setting.ini"
 
@@ -18,6 +19,8 @@ func _ready() -> void:
 		config.set_value("audio", "masterVolume", 1.0) # É multiplicado por 100 depois! (options_menu)
 		config.set_value("audio", "sfxVolume", 1.0)
 		
+		config.set_value("misc", "allowTutorials", true)
+		
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
@@ -28,6 +31,7 @@ func _ready() -> void:
 		# SFX Volume
 		sfxVolumeValue = config.get_value("audio", "sfxVolume")
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfxVolumeValue))
+	
 
 func save_audio_settings(key: String, value):
 	config.set_value("audio", key, value)
@@ -48,3 +52,13 @@ func load_video_settings():
 	for key in config.get_section_keys("video"):
 		video_settings[key] = config.get_value("video", key)
 	return video_settings
+
+func save_misc_settings(key: String, value):
+	config.set_value("misc", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_misc_settings():
+	var misc_settings = {}
+	for key in config.get_section_keys("misc"):
+		misc_settings[key] = config.get_value("misc", key)
+	return misc_settings

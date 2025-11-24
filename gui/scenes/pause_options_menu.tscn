@@ -1,0 +1,238 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwf2pw6w0yaij"]
+
+[ext_resource type="Script" uid="uid://htajhukc7krg" path="res://gui/scenes/pause_options_menu.gd" id="1_h45qr"]
+[ext_resource type="Shader" uid="uid://cdgkos7unxuu0" path="res://gui/scenes/blur.gdshader" id="2_bikeo"]
+[ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="4_5hc7f"]
+[ext_resource type="Script" uid="uid://cb3v4j4e1mcte" path="res://gui/scripts/vboxcontainer_wiggle.gd" id="5_1wp35"]
+[ext_resource type="StyleBox" uid="uid://d2nhairpwqpll" path="res://gui/styles/focus.tres" id="6_1vs5t"]
+[ext_resource type="StyleBox" uid="uid://dj3dq1taud15q" path="res://styles/stylebox.tres" id="7_op37m"]
+[ext_resource type="Script" uid="uid://nsn3o5mu1dcr" path="res://gui/scripts/sfx_slider.gd" id="9_rcbe8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl2a3"]
+shader = ExtResource("2_bikeo")
+shader_parameter/lod = 0.854
+
+[sub_resource type="LabelSettings" id="LabelSettings_iiu8v"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ffl8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uq3gb"]
+
+[node name="options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h45qr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yl2a3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.35
+anchor_top = 0.0592593
+anchor_right = 1.65217
+anchor_bottom = 0.17037
+offset_left = -480.0
+offset_top = -5.62668e-05
+offset_right = -480.0
+offset_bottom = 5.34058e-05
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 0)
+text = "Opções"
+label_settings = SubResource("LabelSettings_iiu8v")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_5hc7f")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7ffl8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.420833
+anchor_top = 0.603604
+anchor_right = 0.579167
+anchor_bottom = 0.801802
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_1wp35")
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="Button" parent="Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../../../Resolution/HBoxContainer/CheckBox")
+focus_neighbor_bottom = NodePath("../../../MasterVolume/HBoxContainer/masterSlider")
+theme_override_styles/focus = ExtResource("6_1vs5t")
+theme_override_styles/normal = ExtResource("7_op37m")
+text = "Voltar"
+
+[node name="Resolution" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.208333
+anchor_top = 0.14074
+anchor_right = 0.785417
+anchor_bottom = 0.288889
+offset_left = 0.999977
+offset_top = 72.0001
+offset_right = 1.0
+offset_bottom = 72.0001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_uq3gb")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Resolution"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285198
+anchor_top = -0.0750001
+anchor_right = 0.931408
+anchor_bottom = 0.925
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Resolution/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tela Cheia:"
+
+[node name="CheckBox" type="CheckBox" parent="Resolution/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
+focus_neighbor_bottom = NodePath("../../../Panel2/VBoxContainer/back")
+theme_override_styles/focus = ExtResource("6_1vs5t")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Resolution"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296028
+anchor_top = 0.825001
+anchor_right = 0.942237
+anchor_bottom = 1.425
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Resolution/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Tutoriais:"
+
+[node name="CheckBox" type="CheckBox" parent="Resolution/HBoxContainer2"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
+focus_neighbor_bottom = NodePath("../../../Panel2/VBoxContainer/back")
+theme_override_styles/focus = ExtResource("6_1vs5t")
+
+[node name="MasterVolume" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.208333
+anchor_top = 0.166666
+anchor_right = 0.785417
+anchor_bottom = 0.314814
+offset_left = -2.28882e-05
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_uq3gb")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MasterVolume"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176895
+anchor_right = 0.823105
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MasterVolume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Volume:"
+
+[node name="masterSlider" type="HSlider" parent="MasterVolume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../Panel2/VBoxContainer/back")
+focus_neighbor_bottom = NodePath("../../../SFXVolume/HBoxContainer/sfxSlider")
+
+[node name="SFXVolume" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.211458
+anchor_top = 0.266666
+anchor_right = 0.788542
+anchor_bottom = 0.414815
+offset_left = -2.28882e-05
+offset_right = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_uq3gb")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SFXVolume"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176895
+anchor_right = 0.823105
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SFXVolume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "   SFX:    "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfxSlider" type="HSlider" parent="SFXVolume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../MasterVolume/HBoxContainer/masterSlider")
+focus_neighbor_bottom = NodePath("../../../Resolution/HBoxContainer/CheckBox")
+value = 100.0
+scrollable = false
+script = ExtResource("9_rcbe8")
+
+[connection signal="pressed" from="Panel2/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="Resolution/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Resolution/HBoxContainer2/CheckBox" to="." method="_on_tutorials_toggled"]
+[connection signal="drag_ended" from="MasterVolume/HBoxContainer/masterSlider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="value_changed" from="MasterVolume/HBoxContainer/masterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="drag_ended" from="SFXVolume/HBoxContainer/sfxSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="SFXVolume/HBoxContainer/sfxSlider" to="." method="_on_sfx_slider_value_changed"]

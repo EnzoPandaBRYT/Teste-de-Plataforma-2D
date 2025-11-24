@@ -13,17 +13,19 @@ func resume():
 	get_tree().paused = false
 	await get_tree().create_timer(0.3).timeout
 	$".".visible = false
-	
+
 func pause():
 	$".".visible = true
+	$"../options_menu".visible = false
+	$"../game_over".visible = false
 	$AnimationPlayer.play("blur")
 	$background/VBoxContainer/back.grab_focus()
 	get_tree().paused = true
-	
+
 func getEsc():
-	if Input.is_action_just_pressed("pause_game") and !get_tree().paused:
+	if Input.is_action_just_pressed("pause_game") and !get_tree().paused and !GeneralVars.gameExit:
 		pause()
-	elif Input.is_action_just_pressed("pause_game") and get_tree().paused:
+	elif Input.is_action_just_pressed("pause_game") and get_tree().paused and !GeneralVars.gameExit:
 		resume()
 		
 func _process(_delta: float) -> void:
@@ -37,8 +39,18 @@ func _on_back_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
+	GeneralVars.player_score = 0
+	GeneralVars.score_update = 0
+	GeneralVars.can_jump_cutscene = false
+	GeneralVars.pitch_score = 1.0
+	GeneralVars.currentTutorial = ""
 	get_tree().reload_current_scene()
 	
+func _on_options_pressed() -> void:
+	visible = false
+	$"../options_menu".visible = true
+	
+
 func _on_exit_pressed() -> void:
 	resume()
 	GeneralVars.gameExit = true
