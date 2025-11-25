@@ -93,7 +93,7 @@ func _crouch() -> void:
 			_enterState("crouch")
 
 func _attack() -> void:
-	_stop_movement()
+	_movement()
 	anim.play("attack")
 
 func _on_wall() -> void:

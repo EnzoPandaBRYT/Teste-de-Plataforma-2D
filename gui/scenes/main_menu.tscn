@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dotbq2cpw0rc8" path="res://gui/scripts/options_title.gd" id="8_brwq4"]
 [ext_resource type="Script" uid="uid://nsn3o5mu1dcr" path="res://gui/scripts/sfx_slider.gd" id="9_vu40p"]
 [ext_resource type="StyleBox" uid="uid://d2nhairpwqpll" path="res://gui/styles/focus.tres" id="10_xax1p"]
-[ext_resource type="Texture2D" uid="uid://c7kng6v428hyb" path="res://assets/characters/optic-cog/Idle.png" id="11_vu40p"]
+[ext_resource type="Texture2D" uid="uid://c7kng6v428hyb" path="res://assets/characters/enemies/optic-cog/Idle.png" id="11_vu40p"]
 [ext_resource type="Script" uid="uid://c8s02luebjh4f" path="res://gui/scripts/sprite_wiggle.gd" id="12_aefp4"]
 [ext_resource type="Script" uid="uid://beqm5e0fhexnq" path="res://gui/scripts/sprite_wiggle_low.gd" id="13_rlxh0"]
 

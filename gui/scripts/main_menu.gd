@@ -25,7 +25,7 @@ func _on_start_pressed() -> void:
 	animationPlayer1.play("fade_out")
 	AudioPlayer.play_FX(sfxStartSound, -12.0)
 	await get_tree().create_timer(1.1).timeout
-	get_tree().change_scene_to_file("res://levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://levels/tutorial.tscn")
 
 func _on_options_pressed() -> void:
 	$section.play("change_options")

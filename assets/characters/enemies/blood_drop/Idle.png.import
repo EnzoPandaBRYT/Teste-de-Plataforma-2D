@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7kng6v428hyb"
-path="res://.godot/imported/Idle.png-95a389c27ea7fcb5582714212bdc01f1.ctex"
+uid="uid://cf32my6e2u7yq"
+path="res://.godot/imported/Idle.png-87043499b42d7b5abb173bacda295269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/optic-cog/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-95a389c27ea7fcb5582714212bdc01f1.ctex"]
+source_file="res://assets/characters/enemies/blood_drop/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-87043499b42d7b5abb173bacda295269.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdpt63xnxrq5u"
-path="res://.godot/imported/2x - Icon.png-2e2be1586513d97d40a4e24f9840cb10.ctex"
+uid="uid://0qlj1byi05lb"
+path="res://.godot/imported/4x - Icon.png-67bf1633a6b24a8dadf42d855cf17910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/optic-cog/2x - Icon.png"
-dest_files=["res://.godot/imported/2x - Icon.png-2e2be1586513d97d40a4e24f9840cb10.ctex"]
+source_file="res://assets/characters/enemies/optic-cog/4x - Icon.png"
+dest_files=["res://.godot/imported/4x - Icon.png-67bf1633a6b24a8dadf42d855cf17910.ctex"]
 
 [params]
 
