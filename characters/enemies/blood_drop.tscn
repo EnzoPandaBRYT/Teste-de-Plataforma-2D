@@ -1,25 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu3vxi1d0xqgd"]
+[gd_scene load_steps=10 format=3 uid="uid://cu3vxi1d0xqgd"]
 
-[ext_resource type="Texture2D" uid="uid://cf32my6e2u7yq" path="res://assets/characters/enemies/blood_drop/Idle.png" id="1_d6yda"]
-[ext_resource type="Script" uid="uid://de04jihmj1auq" path="res://characters/enemies/state_machine_enemies.gd" id="1_sn5v5"]
+[ext_resource type="Script" uid="uid://ukb5pa4vmqx7" path="res://characters/enemies/enemys_scripts/blood_drop.gd" id="1_sn5v5"]
+[ext_resource type="Texture2D" uid="uid://cw0y6nhsr50r1" path="res://assets/characters/enemies/blood_drop/Idle_v2.png" id="2_sn5v5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn5v5"]
-atlas = ExtResource("1_d6yda")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkb5r"]
+atlas = ExtResource("2_sn5v5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oank"]
+atlas = ExtResource("2_sn5v5")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkb5r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sn5v5")
+"texture": SubResource("AtlasTexture_jkb5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oank")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkb5r"]
-size = Vector2(8, 41)
+[sub_resource type="CircleShape2D" id="CircleShape2D_sn5v5"]
 
 [sub_resource type="Animation" id="Animation_sn5v5"]
 length = 0.001
@@ -48,23 +54,23 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("collision_head:position:x")
+tracks/2/path = NodePath("collision:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("collision_head:position:y")
+tracks/3/path = NodePath("collision:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(4.5, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(3, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -97,23 +103,23 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("collision_head:position:x")
+tracks/2/path = NodePath("collision:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("collision_head:position:y")
+tracks/3/path = NodePath("collision:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(4.5, -0.25, 0, 0.25, 0, -10.5, -0.25, 0, 0.25, 0, 4.5, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, -12, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1, 2)
 }
 
@@ -130,15 +136,30 @@ script = ExtResource("1_sn5v5")
 metadata/_custom_type_script = "uid://fmtppmtvm4rk"
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_jkb5r")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0343887
+frame_progress = 0.813782
 
-[node name="collision_head" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 4.5)
-shape = SubResource("RectangleShape2D_jkb5r")
-debug_color = Color(0.964059, 2.31028e-06, 0.495027, 0.42)
+[node name="wall_detect" type="RayCast2D" parent="anim"]
+modulate = Color(0.661793, 0.490398, 3.85046e-07, 1)
+position = Vector2(0, 3)
+rotation = 3.14159
+scale = Vector2(1, -1)
+target_position = Vector2(17, 0)
+collision_mask = 34
+
+[node name="player_detect" type="RayCast2D" parent="anim"]
+position = Vector2(0, 3)
+target_position = Vector2(-17, 0)
+collision_mask = 64
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_sn5v5")
 
 [node name="floating" type="AnimationPlayer" parent="."]
 libraries = {

@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="GLITCHY"
+config/version="0.2.3"
 run/main_scene="uid://grujarr5b35d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=240
+config/icon="uid://dmurfyakph1xx"
+config/windows_native_icon="res://gui/assets/GLITCHY.ico"
 
 [autoload]
 
@@ -22,6 +25,7 @@ GameConfig="*res://scripts/singletons/GameConfig.gd"
 GeneralVars="*res://scripts/singletons/GeneralVars.gd"
 PlayerSM="res://scripts/player/state_machine.gd"
 Signals="*res://scripts/singletons/Signals.gd"
+EnemyVars="*res://characters/enemies/enemy_singleton.gd"
 
 [display]
 
@@ -139,6 +143,7 @@ attack={
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="pass-through"
 2d_physics/layer_6="grippable_walls"
+2d_physics/layer_7="hurt_box"
 
 [rendering]
 

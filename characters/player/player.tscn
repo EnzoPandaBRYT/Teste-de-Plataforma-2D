@@ -1,6 +1,6 @@
-[gd_scene load_steps=86 format=3 uid="uid://d1vdky2eulpoe"]
+[gd_scene load_steps=88 format=3 uid="uid://d1vdky2eulpoe"]
 
-[ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player2.gd" id="1_g1dw6"]
+[ext_resource type="Script" uid="uid://dy8ylk40h0o2q" path="res://characters/player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://bohxvar2u8ki0" path="res://assets/characters/player/glitchy'/Attack v3.png" id="2_gqopd"]
 [ext_resource type="Texture2D" uid="uid://d4cfr81c67a81" path="res://assets/characters/player/glitchy'/Crouch - Transform.png" id="2_on558"]
 [ext_resource type="Texture2D" uid="uid://cj1udhqqjs8h1" path="res://assets/characters/player/glitchy'/Slime - Transform.png" id="5_c6leb"]
@@ -659,8 +659,14 @@ _data = {
 &"player-to-slime": SubResource("Animation_dirf7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqopd"]
+size = Vector2(3, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icpky"]
+size = Vector2(6, 4)
+
 [node name="player" type="CharacterBody2D"]
-collision_mask = 30
+collision_mask = 22
 script = ExtResource("1_g1dw6")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
@@ -672,7 +678,6 @@ frame = 1
 frame_progress = 1.0
 
 [node name="colission" type="CollisionShape2D" parent="."]
-visibility_layer = 14
 position = Vector2(-0.5, -1.18868)
 shape = SubResource("RectangleShape2D_idpv6")
 
@@ -691,5 +696,22 @@ position_smoothing_enabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_rpf03")
 }
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+
+[node name="area" type="CollisionShape2D" parent="hurt_box"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_gqopd")
+debug_color = Color(0.998776, 0, 0.132928, 0.42)
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="area" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(7, -3)
+shape = SubResource("RectangleShape2D_icpky")
+debug_color = Color(0, 0.84424, 0.646891, 0.42)
 
 [connection signal="animation_finished" from="anim" to="." method="_on_animation_finished"]

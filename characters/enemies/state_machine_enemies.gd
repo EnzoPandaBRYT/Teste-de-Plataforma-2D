@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name EnemyStateMachine extends CharacterBody2D
 
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
@@ -31,7 +31,6 @@ func _change_state(new_state: _StateMachine) -> void:
 		_enter_state = true
 
 func player_movement() -> void: pass
-func slime_movement() -> void: pass
 
 # Estados possíveis dos personagens
 func _idle() -> void: pass

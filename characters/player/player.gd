@@ -2,6 +2,8 @@ extends Character
 
 @onready var anim = $anim
 @onready var collision = $colission
+@onready var hurt_box = $hurt_box
+@onready var hit_box_collision = $hit_box/area
 @onready var collision_morph = $collision_morph
 @onready var raycast: RayCast2D = $RayCast2D
 
@@ -217,9 +219,10 @@ func player_movement():
 		
 	if _Input > 0: # Direita
 		raycast.target_position.x = 7
+		hit_box_collision.position.x = 7
 	if _Input < 0: # Esquerda
-		raycast.target_position.x = -7
-	
+		raycast.target_position.x = -8
+		hit_box_collision.position.x = -8
 	if raycast.is_colliding():
 		_OnWall = true
 	else:
