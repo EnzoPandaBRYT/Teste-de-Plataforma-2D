@@ -663,7 +663,7 @@ _data = {
 size = Vector2(3, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icpky"]
-size = Vector2(6, 4)
+size = Vector2(9, 4)
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 22
@@ -710,8 +710,12 @@ debug_color = Color(0.998776, 0, 0.132928, 0.42)
 collision_mask = 8
 
 [node name="area" type="CollisionShape2D" parent="hit_box"]
-position = Vector2(7, -3)
+position = Vector2(5.5, -3)
 shape = SubResource("RectangleShape2D_icpky")
 debug_color = Color(0, 0.84424, 0.646891, 0.42)
 
+[node name="attack_cooldown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="anim" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -66,7 +66,6 @@ func _physics_process(delta: float) -> void:
 	if !_OnWall:
 		_jump_action = Input.is_action_just_pressed("jump")
 	
-	print(lastDir)
 	
 	_game_over()
 	_reset_scene()
@@ -158,5 +157,4 @@ func _reset_scene() -> void:
 func _game_over() -> void:
 	if Input.is_action_just_pressed("game_over"):
 		GeneralVars.gameOver = true
-		print(GeneralVars.gameOver)
 		get_tree().paused = true

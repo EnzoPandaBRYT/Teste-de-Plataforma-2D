@@ -6,3 +6,4 @@ extends Node
 var bd_health = 100
 var bd_attack_damage = 15
 var bd_attack_delay = 2.0
+var bd_taking_damage = false

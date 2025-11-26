@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu3vxi1d0xqgd"]
+[gd_scene load_steps=11 format=3 uid="uid://cu3vxi1d0xqgd"]
 
 [ext_resource type="Script" uid="uid://ukb5pa4vmqx7" path="res://characters/enemies/enemys_scripts/blood_drop.gd" id="1_sn5v5"]
 [ext_resource type="Texture2D" uid="uid://cw0y6nhsr50r1" path="res://assets/characters/enemies/blood_drop/Idle_v2.png" id="2_sn5v5"]
@@ -24,6 +24,9 @@ animations = [{
 "name": &"idle",
 "speed": 2.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn5v5"]
+size = Vector2(21, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sn5v5"]
 
@@ -156,6 +159,15 @@ target_position = Vector2(-17, 0)
 collision_mask = 64
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="hurt_box" type="Area2D" parent="anim"]
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="area" type="CollisionShape2D" parent="anim/hurt_box"]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_sn5v5")
+debug_color = Color(0.961895, 8.66354e-07, 0.507723, 0.42)
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

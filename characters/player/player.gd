@@ -6,13 +6,17 @@ extends Character
 @onready var hit_box_collision = $hit_box/area
 @onready var collision_morph = $collision_morph
 @onready var raycast: RayCast2D = $RayCast2D
+@onready var attack_cooldown_timer = $attack_cooldown
 
 func _ready() -> void:
 	$collision_morph.play("RESET")
+	hit_box_collision.disabled = true
 
 func _idle() -> void: # Estado Inerte
 	_enterState("idle") # Nome da Animação que será tocada
-	_stop_movement() # Anula qualquer movimento para 0
+	
+	if !GeneralVars.taking_damage:
+		_stop_movement() # Anula qualquer movimento para 0
 	
 	if _Crouch and !_jump_action:
 		_change_state(_StateMachine.CROUCH)
@@ -23,7 +27,7 @@ func _idle() -> void: # Estado Inerte
 	if _jump_action and !slime:
 		_change_state(_StateMachine.JUMP)
 	
-	if _Attack:
+	if _Attack and GeneralVars.can_attack:
 		_change_state(_StateMachine.ATTACK)
 	
 	if Input.is_action_just_pressed("slime_transform"):
@@ -31,7 +35,7 @@ func _idle() -> void: # Estado Inerte
 
 func _walk() -> void:
 	
-	if _Attack:
+	if _Attack and GeneralVars.can_attack:
 		_change_state(_StateMachine.ATTACK)
 	
 	if _state != _StateMachine.JUMP:
@@ -95,8 +99,11 @@ func _crouch() -> void:
 			_enterState("crouch")
 
 func _attack() -> void:
+	GeneralVars.can_attack = false
 	_movement()
 	anim.play("attack")
+	hit_box_collision.disabled = false
+	attack_cooldown_timer.start(0.5)
 
 func _on_wall() -> void:
 	_enterState("idle")
@@ -191,7 +198,7 @@ func player_movement():
 		$colission.shape.size.x = 9.0
 		$colission.shape.size.y = 17.8
 		$colission.position.y = -1.189
-
+	
 	# Pulo
 	if Input.is_action_just_pressed("jump") and !_Crouch and !transforming and !GeneralVars.in_cutscene and is_on_floor():
 		AudioPlayer.sfx_jump_normal()
@@ -211,6 +218,7 @@ func player_movement():
 	if wall_jumping and !is_on_floor() and !_jump_action:
 		velocity.x = 100 * facing * -1
 	elif is_on_floor():
+		GeneralVars.taking_damage = false
 		wall_jumping = false
 		facing = 0
 	
@@ -260,12 +268,15 @@ func _on_animation_finished() -> void:
 			
 	if anim.animation == "attack":
 		_change_state(_StateMachine.IDLE)
+		hit_box_collision.disabled = true
 
-func _apply_knockback() -> void:
+func _apply_knockback(strength_x := 100, strength_y = -150) -> void:
 	GeneralVars.taking_damage = true
-	var k_strength_x = 400
-	var k_strength_y = -175
-	velocity.x = -lastDir * k_strength_x
 	
-	if is_on_floor():
-		velocity.y += k_strength_y
+	velocity.y = strength_y
+	velocity.x = -lastDir * strength_x
+	await get_tree().create_timer(1).timeout
+
+
+func _on_attack_cooldown_timeout() -> void:
+	GeneralVars.can_attack = true
