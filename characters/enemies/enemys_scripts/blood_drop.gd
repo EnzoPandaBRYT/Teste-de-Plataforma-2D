@@ -3,6 +3,7 @@ extends EnemyStateMachine
 @onready var anim = $anim
 @onready var wall_detector = $anim/wall_detect
 @onready var player_detector = $anim/player_detect
+@onready var player = $"../../player"
 
 var health = EnemyVars.bd_health
 
@@ -25,5 +26,5 @@ func _process(delta: float) -> void:
 		player_detector.target_position.x *= -1
 	
 	if player_detector.is_colliding():
-		pass
+		player._apply_knockback()
 	velocity.x = directionX

@@ -64,7 +64,7 @@ func _jump() -> void:
 		_change_state(_StateMachine.IDLE)
 		redVel = true
 	
-	elif _Input and redVel:
+	elif _Input and redVel and !GeneralVars.taking_damage:
 		_movement()
 		
 	if _OnWall:
@@ -260,3 +260,12 @@ func _on_animation_finished() -> void:
 			
 	if anim.animation == "attack":
 		_change_state(_StateMachine.IDLE)
+
+func _apply_knockback() -> void:
+	GeneralVars.taking_damage = true
+	var k_strength_x = 400
+	var k_strength_y = -175
+	velocity.x = -lastDir * k_strength_x
+	
+	if is_on_floor():
+		velocity.y += k_strength_y

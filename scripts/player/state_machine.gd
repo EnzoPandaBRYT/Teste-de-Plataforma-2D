@@ -1,5 +1,6 @@
 class_name Character extends CharacterBody2D
 
+@export var _health = GeneralVars.health
 @export var _speed := 100.0
 @export var _jump_speed := -350.0
 
@@ -12,7 +13,7 @@ var locked = false
 var redVel := true
 var transforming := false
 var slime = GeneralVars.slime
-var lastDir = 0.0
+var lastDir = GeneralVars.lastDir
 
 # Variáveis do Wall Jump
 var wall_jumping = false
@@ -64,6 +65,8 @@ func _physics_process(delta: float) -> void:
 		_StateMachine.SLIME_JUMP: _slime_jump()
 	if !_OnWall:
 		_jump_action = Input.is_action_just_pressed("jump")
+	
+	print(lastDir)
 	
 	_game_over()
 	_reset_scene()

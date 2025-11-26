@@ -1154,6 +1154,7 @@ texture = ExtResource("11_2fv1q")
 position = Vector2(82, -3)
 scale = Vector2(2, 2)
 collision_mask = 62
+_health = 100
 
 [node name="anim" parent="player" index="0"]
 animation = &"slime_walk"

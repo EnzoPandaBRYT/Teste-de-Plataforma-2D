@@ -17,12 +17,17 @@ var can_detect_input = true
 var detect_delay = 0.15
 
 # Player
+var lastDir = 0.0
+
 var in_cutscene = false
 var can_jump_cutscene = false
 var can_move = true
 var slime = false
 var gameOver = false
 var hasCore = false
+
+var health = 100
+var taking_damage = false
 
 var allowTutorials = GameConfig.allowTutorials
 var currentTutorial = ""
